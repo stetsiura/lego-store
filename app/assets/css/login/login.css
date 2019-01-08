@@ -1,0 +1,35 @@
+.login-register {
+    display: block;
+}
+
+.login-register > div {
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+}
+
+.login-register > div.login {
+    padding: 0 20px 0 0;
+    margin: 0;
+}
+
+.login-register > div.register {
+    padding: 0 0 0 20px;
+    margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .login-register > div {
+        width: 100%;
+        float: none;
+    }
+
+    .login-register > div.login {
+        padding: 0;
+    }
+
+    .login-register > div.register {
+        padding: 0;
+    }
+}

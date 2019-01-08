@@ -1,0 +1,7 @@
+\content\uploads
+\content\uploads\categories
+\content\uploads\products\original
+\content\uploads\products\thumb
+\content\uploads\news\cover\original
+\content\uploads\news\cover\thumb
+\content\uploads\slider

@@ -105,7 +105,7 @@ class File
         return $fileNames;
     }
 
-	public function processCategoryFile($htmlInputName)
+	public function processCategoryImageFile($htmlInputName)
     {
         if (!$this->fileUploaded($htmlInputName)) {
             return $this->categoryImageFileNames(null, true);
@@ -116,9 +116,27 @@ class File
 
         $fileNames = $this->categoryImageFileNames($extension);
 
-        $this->moveUploadedFile($tmpFilePath, $fileNames['full']);
+        $this->moveUploadedFile($tmpFilePath, $fileNames['big']);
 
-        $this->image->resizeCategoryImage($fileNames['full'], $fileNames['full']);
+        $this->image->resizeCategoryBigImage($fileNames['big'], $fileNames['big']);
+
+        $this->image->resizeCategorySmallImage($fileNames['big'], $fileNames['small']);
+
+        return $fileNames;
+    }
+
+    public function processCategoryThumbFile($htmlInputName)
+    {
+        if (!$this->fileUploaded($htmlInputName)) {
+            return $this->categoryImageFileNames(null, true);
+        }
+
+        $tmpFilePath = $this->request->files[$htmlInputName]['tmp_name'];
+        $extension = $this->extension($this->request->files[$htmlInputName]['name']);
+
+        $fileNames = $this->categoryThumbFileNames($extension);
+
+        $this->moveUploadedFile($tmpFilePath, $fileNames['original']);
 
         return $fileNames;
     }
@@ -151,18 +169,45 @@ class File
     {
         if ($empty) {
             return [
-                'full' => '',
-                'basename' => ''
+                'big' => '',
+                'big_basename' => '',
+                'small' => '',
+                'small_basename' => ''
+            ];
+        }
+
+        $bigBaseName = $this->uniqueBasename($extension);
+
+        $bigImagePath = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/big/'.  $bigBaseName;
+
+        $smallBaseName = $this->uniqueBasename($extension);
+
+        $smallImagePath = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/small/'.  $smallBaseName;
+
+        return [
+            'big' => $bigImagePath,
+            'big_basename' => $bigBaseName,
+            'small' => $smallImagePath,
+            'small_basename' => $smallBaseName
+        ];
+    }
+
+    private function categoryThumbFileNames($extension, $empty = false)
+    {
+        if ($empty) {
+            return [
+                'original' => '',
+                'original_basename' => ''
             ];
         }
 
         $baseName = $this->uniqueBasename($extension);
 
-        $fullImagePath = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/'.  $baseName;
+        $fullImagePath = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/thumb/'.  $baseName;
 
         return [
-            'full' => $fullImagePath,
-            'basename' => $baseName
+            'original' => $fullImagePath,
+            'original_basename' => $baseName
         ];
     }
 

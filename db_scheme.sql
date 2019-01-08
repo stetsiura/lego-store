@@ -42,6 +42,7 @@ CREATE TABLE product (
 	has_all_parts BOOLEAN,
 	has_instructions BOOLEAN,
 	has_box BOOLEAN,
+	item_state ENUM('order', 'instock', 'hidden') DEFAULT 'order',
 	has_discount BOOLEAN,
 	price FLOAT(6, 2),
 	actual_price FLOAT(6, 2),

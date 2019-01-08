@@ -1,5 +1,8 @@
 \content\uploads
-\content\uploads\categories
+\content\uploads\categories\big
+\content\uploads\categories\small
+\content\uploads\categories\thumb
+\content\uploads\categories\logo
 \content\uploads\products\original
 \content\uploads\products\thumb
 \content\uploads\news\cover\original

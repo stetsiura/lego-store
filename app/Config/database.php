@@ -1,9 +1,9 @@
 <?php
 
 return [
-    "host"     => "stetsura.mysql.tools",
-    "db_name"  => "stetsura_miniso",
+    "host"     => "127.0.0.1",
+    "db_name"  => "legostore",
     "charset"  => "utf8",
-    "username" => "stetsura_miniso",
-    "password" => "gubwjv7e"
+    "username" => "root",
+    "password" => ""
 ];

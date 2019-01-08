@@ -9,7 +9,7 @@ define("ROOT_DIR", __DIR__);
 define("FILE_ROOT_DIR", dirname(dirname(__FILE__)));
 define("DS", DIRECTORY_SEPARATOR);
 define("ENV", "Admin");
-define("SRV", "PROD");
+define("SRV", "DEV");
 
 define("UPLOADS_PATH", DS . "content" . DS . "uploads" . DS);
 define("UPLOADS_THUMBS_PATH", DS . "content" . DS . "uploads" . DS . "thumbs" . DS);

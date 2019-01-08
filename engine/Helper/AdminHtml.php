@@ -227,12 +227,39 @@ class AdminHtml
         echo "</li>\n";
     }
 
-    public static function categoryImage($imageUrl = '')
+    public static function categoryBigImage($imageUrl = '')
     {
         if (empty($imageUrl)) {
             return "/admin/assets/img/no-image-thumb.png";
         } else {
-            return UPLOADS_PATH . "categories/" . $imageUrl;
+            return UPLOADS_PATH . "categories/big/" . $imageUrl;
+        }
+    }
+
+    public static function categorySmallImage($imageUrl = '')
+    {
+        if (empty($imageUrl)) {
+            return "/admin/assets/img/no-image-thumb.png";
+        } else {
+            return UPLOADS_PATH . "categories/small/" . $imageUrl;
+        }
+    }
+
+    public static function categoryLogoImage($imageUrl = '')
+    {
+        if (empty($imageUrl)) {
+            return "/admin/assets/img/no-image-thumb.png";
+        } else {
+            return UPLOADS_PATH . "categories/logo/" . $imageUrl;
+        }
+    }
+
+    public static function categoryThumbImage($imageUrl = '')
+    {
+        if (empty($imageUrl)) {
+            return "/admin/assets/img/no-image-thumb.png";
+        } else {
+            return UPLOADS_PATH . "categories/thumb/" . $imageUrl;
         }
     }
 

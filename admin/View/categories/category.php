@@ -3,7 +3,6 @@
 
 <?php Asset::js('/admin/assets/js/jstree/jstree.min') ?>
 <?php Asset::js('/admin/assets/js/validation'); ?>
-<?php Asset::js('/admin/assets/js/transliteration'); ?>
 <?php Asset::js('/admin/assets/js/categories/categories') ?>
 
 <?php $this->theme->header(); ?>
@@ -44,20 +43,12 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a href="#" data-toggle="modal" data-target="#category-edit-modal">Редактировать эту категорию</a></li>
-                                <?php if(!is_null($category['parent_id'])): ?>
-                                    <li><a href="#" data-toggle="modal" data-target="#moving-category-modal">Перенести эту категорию</a></li>
-                                <?php endif; ?>
-                                <?php if (!is_null($category['parent_id'])): ?>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#category-removal-modal">Удалить эту категорию</a></li>
-                                <?php endif; ?>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#" data-toggle="modal" data-target="#category-removal-modal">Удалить эту категорию</a></li>
                             </ul>
                         </div>
                         <?php endif; ?>
-                    <a type="button" class="btn btn-default" href="/admin/product/add/to-category/<?= $category['id'] ?>">Добавить продукт</a>
-                    <?php if($category['id'] != 1 && is_null($category['parent_id'])): ?>
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#category-create-modal">Создать подкатегорию</button>
-                    <?php endif; ?>
+                        <a type="button" class="btn btn-default" href="/admin/product/add/to-category/<?= $category['id'] ?>">Добавить продукт</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -130,7 +121,11 @@
             </div>
 
             <?php else: ?>
-                <div class="alert alert-info align-center" role="alert">
+                <div>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#category-create-modal">Создать категорию</button>
+                </div>
+                
+                <div class="alert alert-info align-center margin-top-10" role="alert">
                     Для начала работы <strong>выберите категорию из списка слева</strong>.
                 </div>
             <?php endif; ?>
@@ -141,7 +136,7 @@
 <?php if(!is_null($category) && $category['id'] != 1): ?>
 <!-- Category Edit Modal -->
 <div class="modal fade" id="category-edit-modal" tabindex="-1" role="dialog" aria-labelledby="category-edit-modal-label">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form id="edit-form" action="/admin/categories/edit/" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
@@ -156,27 +151,56 @@
                         <p class="form-error-message"></p>
                     </div>
                     <div class="form-group">
-                        <?php $readonly = (is_null($category['parent_id'])) ? 'readonly' : ''; ?>
-                        <?php AdminHtml::label('alias', 'Псевдоним:'); ?>
-                        <?php AdminHtml::inputText('alias', 'alias', 'form-control', $category['alias'], 'false', 'false', $readonly, 'Псевдоним...'); ?>
+                        <?php AdminHtml::label('original_name', 'Оригинальное название (на английском):'); ?>
+                        <?php AdminHtml::inputText('original_name', 'original-name', 'form-control', $category['original_name'], 'false', 'false', '', 'Оригинальное название категории...'); ?>
                         <p class="form-error-message"></p>
                     </div>
-                    <?php if(is_null($category['parent_id'])): ?>
                     <div class="form-group">
-                        <div class="category-image">
-                            <img id="category-image" src="<?= AdminHtml::categoryImage($category['image_url']) ?>">
-                        </div>
+                        <?php AdminHtml::label('alias', 'Псевдоним:'); ?>
+                        <?php AdminHtml::inputText('alias', 'alias', 'form-control', $category['alias'], 'false', 'false', '', 'Псевдоним...'); ?>
+                        <p class="form-error-message"></p>
                     </div>
                     <div class="form-group">
-                        <div class="file-input">
-                            <button type="button" id="cover-btn" class="btn btn-primary btn-block">Выберите картинку...</button>
-                            <input type="file" accept="image/*" name="category_image_file" id="category-image-file" />
+                        <?php AdminHtml::label('cover_color', 'Цвет обложки (HEX):'); ?>
+                        <?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', $category['cover_color'], 'false', 'false', '', 'Цвет обложки (HEX)...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        <?php AdminHtml::label('description', 'Описание:'); ?>
+                        <?php AdminHtml::textarea('description', 'description', 'form-control half-height', $category['description'], '', 'Описание категории...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <?php AdminHtml::label('category_image_file', 'Обложка категории:'); ?>
+                                <div class="category-image">
+                                    <img id="category-image" src="<?= AdminHtml::categorySmallImage($category['small_image_url']) ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="file-input">
+                                    <button type="button" id="category-img-btn" class="btn btn-primary btn-block">Выберите картинку...</button>
+                                    <input type="file" accept="image/*" name="category_image_file" id="category-image-file" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <?php AdminHtml::label('category_thumb_file', 'Иконка категории:'); ?>
+                                <div class="category-image">
+                                    <img id="category-thumb" src="<?= AdminHtml::categoryThumbImage($category['thumb_image_url']) ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="file-input">
+                                    <button type="button" id="category-thumb-btn" class="btn btn-primary btn-block">Выберите картинку...</button>
+                                    <input type="file" accept="image/*" name="category_thumb_file" id="category-thumb-file" />
+                                </div>
+                            </div>
                         </div>
                     </div>
-					<?php AdminHtml::inputHidden('type', 'type', 'parent'); ?>
-                    <?php else: ?>
-					<?php AdminHtml::inputHidden('type', 'type', 'child'); ?>
-					<?php endif; ?>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
@@ -188,64 +212,82 @@
 </div>
 <?php endif; ?>
 
-<?php if(!is_null($category) && is_null($category['parent_id'])): ?>
+<?php if(is_null($category)): ?>
     <!-- Category Create Modal -->
     <div class="modal fade" id="category-create-modal" tabindex="-1" role="dialog" aria-labelledby="category-create-modal-label">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form id="create-form" action="/admin/categories/add/" method="post">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="category-create-modal-label">Создание подкатегории</h4>
-                    </div>
-                    <div class="modal-body">
-                        <?php AdminHtml::inputHidden('create_id', 'create-id', $category['id']); ?>
-                        <div class="form-group">
-                            <?php AdminHtml::label('create-name', 'Название:'); ?>
-                            <?php AdminHtml::inputText('create_name', 'create-name', 'form-control', '', 'false', 'false', '', 'Название категории...'); ?>
-                            <p class="form-error-message"></p>
-                        </div>
-                        <div class="form-group">
-                            <?php AdminHtml::label('create-alias', 'Псевдоним:'); ?>
-                            <?php AdminHtml::inputText('create_alias', 'create-alias', 'form-control', '', 'false', 'false', '', 'Псевдоним...'); ?>
-                            <p class="form-error-message"></p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
-
-<?php if(!is_null($category) && !is_null($category['parent_id'])): ?>
-<!-- Modal for moving category -->
-<div class="modal fade" id="moving-category-modal" tabindex="-1" role="dialog" aria-labelledby="moving-category-modal-label">
-    <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form method="post" action="/admin/categories/move-category/">
+            <form id="edit-form" action="/admin/categories/add/" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="moving-category-modal-label">Выберите категорию, в которую нужно перенести:</h4>
+                    <h4 class="modal-title" id="category-edit-modal-label">Редактирование категории</h4>
                 </div>
                 <div class="modal-body">
-                    <div id="moving-category-tree" class="tree">
-                        <?php AdminHtml::tree($tree); ?>
+                    <div class="form-group">
+                        <?php AdminHtml::label('name', 'Название:'); ?>
+                        <?php AdminHtml::inputText('name', 'name', 'form-control', '', 'false', 'false', '', 'Название категории...'); ?>
+                        <p class="form-error-message"></p>
                     </div>
-                    <?php AdminHtml::inputHidden('categoryId', 'categoryId', $category['id']) ?>
-                    <?php AdminHtml::inputHidden('targetCategoryId', 'targetCategoryId', '') ?>
+                    <div class="form-group">
+                        <?php AdminHtml::label('original_name', 'Оригинальное название (на английском):'); ?>
+                        <?php AdminHtml::inputText('original_name', 'original-name', 'form-control', '', 'false', 'false', '', 'Оригинальное название категории...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        <?php AdminHtml::label('alias', 'Псевдоним:'); ?>
+                        <?php AdminHtml::inputText('alias', 'alias', 'form-control', '', 'false', 'false', '', 'Псевдоним...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        <?php AdminHtml::label('description', 'Описание:'); ?>
+                        <?php AdminHtml::textarea('description', 'description', 'form-control half-height', '', '', 'Описание категории...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        <?php AdminHtml::label('cover_color', 'Цвет обложки (HEX):'); ?>
+                        <?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', '', 'false', 'false', '', 'Цвет обложки (HEX)...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <?php AdminHtml::label('category_image_file', 'Обложка категории:'); ?>
+                                <div class="category-image">
+                                    <img id="category-image" src="<?= AdminHtml::categorySmallImage('') ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="file-input">
+                                    <button type="button" id="category-img-btn" class="btn btn-primary btn-block">Выберите картинку...</button>
+                                    <input type="file" accept="image/*" name="category_image_file" id="category-image-file" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <?php AdminHtml::label('category_thumb_file', 'Иконка категории:'); ?>
+                                <div class="category-image">
+                                    <img id="category-thumb" src="<?= AdminHtml::categoryThumbImage('') ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="file-input">
+                                    <button type="button" id="category-thumb-btn" class="btn btn-primary btn-block">Выберите картинку...</button>
+                                    <input type="file" accept="image/*" name="category_thumb_file" id="category-thumb-file" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                    <button type="submit" class="btn btn-primary">Перенести</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
                 </div>
             </form>
         </div>
+        </div>
     </div>
-</div>
 <?php endif; ?>
 
 <!-- Modal for moving product -->
@@ -298,7 +340,7 @@
     </div>
 <?php endif; ?>
 
-<?php if (!is_null($category) && !is_null($category['parent_id'])): ?>
+<?php if (!is_null($category)): ?>
     <!-- Modal for removing category -->
     <div class="modal fade" id="category-removal-modal" tabindex="-1" role="dialog" aria-labelledby="category-removal-modal-label">
         <div class="modal-dialog" role="document">

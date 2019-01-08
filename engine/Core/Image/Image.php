@@ -10,7 +10,9 @@ class Image
 	
 	const PRODUCT_IMAGE_ORIGINAL_SCALE = "500x700";
 
-	const CATEGORY_SCALE = "800x800";
+	const CATEGORY_IMAGE_BIG_SCALE = "1920x780";
+
+	const CATEGORY_IMAGE_SMALL_SCALE = "700x700";
 
 	const NEWS_IMAGE_THUMB_SCALE = "420x420";
 
@@ -38,8 +40,12 @@ class Image
 		$this->resize($inputFile, $outputFile, self::PRODUCT_IMAGE_THUMB_SCALE);
 	}
 
-	public function resizeCategoryImage($inputFile, $outputFile) {
-        $this->resize($inputFile, $outputFile, self::CATEGORY_SCALE);
+	public function resizeCategoryBigImage($inputFile, $outputFile) {
+        $this->resize($inputFile, $outputFile, self::CATEGORY_IMAGE_BIG_SCALE);
+	}
+	
+	public function resizeCategorySmallImage($inputFile, $outputFile) {
+        $this->resize($inputFile, $outputFile, self::CATEGORY_IMAGE_SMALL_SCALE);
     }
 
     public function resizeNewsOriginalImage($inputFile, $outputFile) {
@@ -108,7 +114,7 @@ class Image
 	private function convertPath()
 	{
 		if (SRV == "DEV") {
-			return 'magick ';
+			return 'convert ';
 		} else {
 			return '/usr/bin/convert ';
 		}

@@ -52,8 +52,8 @@ class CategoriesController extends AdminController
 		
 		$this->model->category->create($params);
 
-        \Session::set('category-message', 'Подкатегория создана');
-		\Redirect::to('/admin/categories/' . $params['create_id']);
+        \Session::set('category-message', 'Категория создана');
+		\Redirect::to('/admin/categories/');
 	}
 	
 	public function edit()

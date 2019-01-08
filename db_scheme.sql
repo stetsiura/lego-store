@@ -1,3 +1,7 @@
+CREATE DATABASE legostore CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE legostore;
+
 CREATE TABLE user (
 	id INT NOT NULL AUTO_INCREMENT,
 	email VARCHAR(255) NOT NULL UNIQUE,
@@ -12,10 +16,15 @@ CREATE TABLE user (
 
 CREATE TABLE category (
 	id INT NOT NULL AUTO_INCREMENT,
-	parent_id INT,
 	name VARCHAR(255) NOT NULL UNIQUE,
+	original_name VARCHAR(255) NOT NULL UNIQUE,
+	description VARCHAR(5000),
 	creation_date DATETIME,
-	image_url VARCHAR(255),
+	small_image_url VARCHAR(255),
+	big_image_url VARCHAR(255),
+	thumb_image_url VARCHAR(255),
+	logo_image_url VARCHAR(255),
+	cover_color VARCHAR(255),
 	alias VARCHAR(300),
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARACTER SET utf8;
@@ -23,27 +32,27 @@ CREATE TABLE category (
 CREATE TABLE product (
 	id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(255),
-	alias VARCHAR(300),
-	description VARCHAR(1000),
-	sku VARCHAR(255),
+	original_name VARCHAR(255),
+	description VARCHAR(5000),
 	item_code VARCHAR(255),
-	barcode VARCHAR(255),
-	ingredients VARCHAR(1000),
-	specification VARCHAR(1000),
-	product_usage VARCHAR(2000),
-	warning VARCHAR(2000),
+	year_released INT,
+	parts_count INT,
+	minifigures_count INT,
+	item_condition ENUM('used', 'new') DEFAULT 'used',
+	has_all_parts BOOLEAN,
+	has_instructions BOOLEAN,
+	has_box BOOLEAN,
 	has_discount BOOLEAN,
 	price FLOAT(6, 2),
 	actual_price FLOAT(6, 2),
 	is_deleted BOOLEAN,
-	in_stock BOOLEAN,
 	is_popular BOOLEAN,
 	small_image_url VARCHAR(500),
 	big_image_url VARCHAR(500),
 	creation_date DATETIME,
 	category_id INT,
 	PRIMARY KEY (id),
-	CONSTRAINT fk_category FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+	CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB CHARACTER SET utf8;
 
 CREATE TABLE news (
@@ -68,15 +77,19 @@ CREATE TABLE wishlist (
 	product_id INT,
 	creation_date DATETIME,
 	PRIMARY KEY(id),
-	CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
-	CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+	CONSTRAINT fk_wishlist_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT fk_wishlist_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB CHARACTER SET utf8;
 
 CREATE TABLE slide (
 	id INT NOT NULL AUTO_INCREMENT,
 	alias VARCHAR(255),
-	url VARCHAR(500),
+	button_url VARCHAR(500),
+	button_text VARCHAR(200),
+	header_text VARCHAR(500),
+	slide_description VARCHAR(1000),
 	image_url VARCHAR(500),
+	cover_color VARCHAR(255),
 	position INT,
 	PRIMARY KEY(id)
 ) ENGINE=InnoDB CHARACTER SET utf8;
@@ -96,4 +109,45 @@ CREATE TABLE subscriber (
 	is_subscribed BOOLEAN,
 	creation_date DATETIME,
 	PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+
+CREATE TABLE address (
+	id INT NOT NULL AUTO_INCREMENT,
+	city VARCHAR(255),
+	post_office VARCHAR(1000),
+	email VARCHAR(100),
+	phone VARCHAR(100),
+	client_name VARCHAR(255),
+	user_id INT,
+	PRIMARY KEY (id),
+	CONSTRAINT fk_address_user FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB CHARACTER SET utf8;
+
+CREATE TABLE client_order (
+	id INT NOT NULL AUTO_INCREMENT,
+	order_date DATETIME,
+	shipping_cost FLOAT(6, 2),
+	items_cost FLOAT(6, 2),
+	total_cost FLOAT(6, 2),
+	order_status ENUM('new', 'ready', 'delivered', 'cancelled') DEFAULT 'new',
+	notes VARCHAR(1000),
+	user_id INT,
+	address_id INT NOT NULL,
+	PRIMARY KEY(id),
+	CONSTRAINT fk_client_order_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT fk_client_order_address FOREIGN KEY (address_id) REFERENCES address(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB CHARACTER SET utf8;
+
+CREATE TABLE order_item (
+	id INT NOT NULL AUTO_INCREMENT,
+	product_id INT NOT NULL,
+	price FLOAT(6, 2),
+	actual_price FLOAT(6, 2),
+	has_discount BOOLEAN,
+	item_count INT,
+	total_item_cost FLOAT(6, 2),
+	client_order_id INT,
+	PRIMARY KEY(id),
+	CONSTRAINT fk_order_item_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE NO ACTION ON UPDATE NO ACTION,
+	CONSTRAINT fk_order_item_client_order FOREIGN KEY (client_order_id) REFERENCES client_order(id) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB CHARACTER SET utf8;

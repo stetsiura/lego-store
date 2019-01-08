@@ -21,7 +21,7 @@ class CategoriesController extends AdminController
 		$this->data['category'] = null;
 		$this->data['breadcrumbs'] = $this->model->category->breadCrumbs(-1);
 		
-		$this->data['books'] = [];
+		$this->data['products'] = [];
 		
 		$this->view->setTitle('Управление категориями');
 		$this->view->render('categories/category', $this->data);

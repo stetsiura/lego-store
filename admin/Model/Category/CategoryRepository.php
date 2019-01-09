@@ -62,41 +62,49 @@ class CategoryRepository extends Model
 	 */
 	public function edit($params)
 	{
-	    $category = $this->category($params['id']);
+		$category = $this->category($params['id']);
+		
+		$imageFileNames = $this->file->processCategoryImageFile(self::IMAGE_INPUT_NAME);
 
-		if ($this->file->fileUploaded(self::IMAGE_INPUT_NAME)) {
-		    $this->file->removeCategoryImage($category['image_url']);
+		$thumbFileNames = $this->file->processCategoryThumbFile(self::THUMB_INPUT_NAME);
 
-		    $imageFileNames = $this->file->processCategoryImageFile(self::IMAGE_INPUT_NAME);
+		if (empty($imageFileNames['big_basename'])) {
+			$imageFileNames['big_basename'] = $category['big_image_url'];
+		} else {
+			$this->file->removeCategoryBigImage($category['big_image_url']);
+		}
 
-            $this->db->query(
-                $this->qb
-                    ->update('category')
-                    ->set([
-                        'name' => trim($params['name']),
-                        'alias' => trim($params['alias']),
-                        'image_url' => $fileNames['basename']
-                    ])
-                    ->where('id', $params['id'], '=')
-                    ->limit(1)
-                    ->sql(),
-                $this->qb->values
-            );
-        } else {
+		if (empty($imageFileNames['small_basename'])) {
+			$imageFileNames['small_basename'] = $category['small_image_url'];
+		} else {
+			$this->file->removeCategorySmallImage($category['small_image_url']);
+		}
 
-            $this->db->query(
-                $this->qb
-                    ->update('category')
-                    ->set([
-                        'name' => trim($params['name']),
-                        'alias' => trim($params['alias'])
-                    ])
-                    ->where('id', $params['id'], '=')
-                    ->limit(1)
-                    ->sql(),
-                $this->qb->values
-            );
-        }
+		if (empty($thumbFileNames['original_basename'])) {
+			$thumbFileNames['original_basename'] = $category['thumb_image_url'];
+		} else {
+			$this->file->removeCategoryThumbImage($category['thumb_image_url']);
+		}
+
+		$this->db->query(
+			$this->qb
+				->update('category')
+				->set([
+					'name' => $params['name'],
+					'original_name' => $params['original_name'],
+					'description' => $params['description'],
+					'cover_color' => $params['cover_color'],
+                    'alias' => $params['alias'],
+					'creation_date' => date('Y-m-d H:i:s'),
+					'big_image_url' => $imageFileNames['big_basename'],
+					'small_image_url' => $imageFileNames['small_basename'],
+					'thumb_image_url' => $thumbFileNames['original_basename'],
+                ])
+				->where('id', $params['id'], '=')
+				->limit(1)
+				->sql(),
+			$this->qb->values
+		);
 	}
 
 	public function remove($id)

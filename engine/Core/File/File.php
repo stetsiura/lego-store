@@ -290,10 +290,28 @@ class File
 		}
 	}
 
-	public function removeCategoryImage($basename)
+	public function removeCategoryBigImage($basename)
     {
         if (!empty($basename)) {
-            $path = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/'. $basename;
+            $path = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/big/'. $basename;
+
+            $this->removeFile($path);
+        }
+    }
+
+    public function removeCategorySmallImage($basename)
+    {
+        if (!empty($basename)) {
+            $path = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/small/'. $basename;
+
+            $this->removeFile($path);
+        }
+    }
+
+    public function removeCategoryThumbImage($basename)
+    {
+        if (!empty($basename)) {
+            $path = FILE_ROOT_DIR . UPLOADS_PATH . 'categories/thumb/'. $basename;
 
             $this->removeFile($path);
         }

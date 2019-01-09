@@ -70,7 +70,7 @@
                     <tr>
                         <th>Картинка</th>
                         <th>Название</th>
-                        <th>ID</th>
+                        <th>Номер</th>
                         <th>Цена</th>
                         <th>Действия</th>
                     </tr>
@@ -82,8 +82,8 @@
                                 <img src="<?php AdminHtml::productThumbnailImage($product['small_image_url']); ?>" >
                             </td>
                             <td>
-                                <strong><?= $product['name'] ?></strong>
-                                <?php AdminHtml::inStock($product['in_stock']); ?>
+                                <strong><?= $product['original_name'] ?></strong>
+                                <?php AdminHtml::inStock($product['item_state']); ?>
                                 <?php AdminHtml::isPopular($product['is_popular']); ?>
                             </td>
                             <td>
@@ -101,7 +101,7 @@
                                         <li><a href="/admin/product/edit/<?= $product['id'] ?>/in-category/<?= $product['category_id'] ?>" target="_blank">Редактировать</a></li>
                                         <li><a href="#" data-product-id="<?= $product['id'] ?>" class="moving-product-btn" data-toggle="modal" data-target="#moving-product-modal">Перенести</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="#" class="removing-product-btn" data-toggle="modal" data-target="#removing-product-modal" data-product-id="<?= $product['id'] ?>" data-product-name="<?= $product['name'] ?>">Удалить</a></li>
+                                        <li><a href="#" class="removing-product-btn" data-toggle="modal" data-target="#removing-product-modal" data-product-id="<?= $product['id'] ?>" data-product-name="<?= $product['original_name'] ?>">Удалить</a></li>
                                     </ul>
                                 </div>
                             </td>

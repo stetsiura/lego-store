@@ -317,7 +317,23 @@ class AdminHtml
 
     public static function inStock($inStock)
     {
-        $stockWord = $inStock ? "Есть в наличии" : "НЕТ в наличии";
+        $stockWord = '';
+
+        switch($inStock) {
+            case 'order':
+                $stockWord = 'Под заказ';
+                break;
+            case 'instock':
+                $stockWord = 'В наличии';
+                break;
+            case 'hidden':
+                $stockWord = 'Не отображается';
+                break;
+            default:
+                $stockWord = 'Под заказ';
+                break;
+        }
+
         echo "<span class=\"stockage\">{$stockWord}</span>";
     }
 

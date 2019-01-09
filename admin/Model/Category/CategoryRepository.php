@@ -109,18 +109,36 @@ class CategoryRepository extends Model
 
 	public function remove($id)
     {
-        $this->load->model('Product');
+		$this->load->model('Product');
 
-        $this->model->product->moveToUnsorted($id);
+		$this->model->product->moveToUnsorted($id);
+		
+		$category = $this->category($id);
 
-        $this->db->query(
-            $this->qb
-                ->delete('category')
-                ->where('id', $id, '=')
-                ->limit(1)
-                ->sql(),
-            $this->qb->values
-        );
+		if (!is_null($category)) {
+
+			if (!empty($category['big_image_url'])) {
+				$this->file->removeCategoryBigImage($category['big_image_url']);
+			}
+
+			if (!empty($category['small_image_url'])) {
+				$this->file->removeCategorySmallImage($category['small_image_url']);
+			}
+
+			if (!empty($category['thumb_image_url'])) {
+				$this->file->removeCategoryThumbImage($category['thumb_image_url']);
+			}
+
+			$this->db->query(
+				$this->qb
+					->delete('category')
+					->where('id', $id, '=')
+					->limit(1)
+					->sql(),
+				$this->qb->values
+			);
+
+		}
     }
 	
 	/**
@@ -221,32 +239,6 @@ class CategoryRepository extends Model
 			'selected'  => $category['id'] == $selectedId ? true : false,
 			'children'  => []
 		];
-	}
-	
-
-	
-	/**
-	 * @param array $categories
-	 * @param int $targetId
-	 * @return array
-	 */
-	private function checkAncestors($categories, $targetId)
-	{
-		$result = true;
-		
-		if (!empty($categories)) {
-			foreach($categories as $category) {
-				if ($category['id'] == $targetId) {
-					return false;
-				}
-				
-				$childCategories = $this->childCategories($category['id']);
-				
-				$result = $result && $this->checkAncestors($childCategories, $targetId);
-			}
-		}
-		
-		return $result;
 	}
 	
 	/**

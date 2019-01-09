@@ -98,7 +98,7 @@
                                         Опции <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/admin/product/edit/<?= $product['id'] ?>/in-category/<?= $product['category_id'] ?>" target="_blank">Редактировать</a></li>
+                                        <li><a href="/admin/product/edit/<?= $product['id'] ?>/in-category/<?= $product['category_id'] ?>">Редактировать</a></li>
                                         <li><a href="#" data-product-id="<?= $product['id'] ?>" class="moving-product-btn" data-toggle="modal" data-target="#moving-product-modal">Перенести</a></li>
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#" class="removing-product-btn" data-toggle="modal" data-target="#removing-product-modal" data-product-id="<?= $product['id'] ?>" data-product-name="<?= $product['original_name'] ?>">Удалить</a></li>

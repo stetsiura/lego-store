@@ -20,7 +20,18 @@ $(document).ready(function() {
 		} else {
 			discountPriceGroup.slideUp(300);
 		}
-	});
+    });
+    
+    $('select#item-condition').change(function() {
+        var value = $(this).val(),
+            usedProductDetailsGroup = $('#used-product-details-group');
+
+        if (value == 'used') {
+            usedProductDetailsGroup.slideDown(300);
+        } else {
+            usedProductDetailsGroup.slideUp(300);
+        }
+    });
 
 	$('.summernote').summernote({
         lang: 'ru-RU',
@@ -32,13 +43,9 @@ $(document).ready(function() {
         ]
     });
 
-	$('#warning-editor').summernote(
-		'code', $('textarea#warning').val()
+	$('#description-editor').summernote(
+		'code', $('textarea#description').val()
 	);
-
-    $('#usage-editor').summernote(
-        'code', $('textarea#usage').val()
-    );
 
     $('input#product-image-file').change(function(e) {
         var fileName = e.target.files[0].name;
@@ -46,27 +53,21 @@ $(document).ready(function() {
         imagePreview(this);
     });
 
-    $('input#name').keyup(function() {
-    	var input = $(this),
-			value = input.val(),
-			transliteration = transliterate(value);
-    	$('input#alias').val(transliteration);
-	});
-
     var editForm = $('#edit-form');
 
     editForm.submit(function(e) {
 
-        $('textarea#usage').val($('#usage-editor').summernote('code'));
-        $('textarea#warning').val($('#warning-editor').summernote('code'));
+        $('textarea#description').val($('#description-editor').summernote('code'));
 
         var valid = validation
             .init()
             .notEmpty('name', 'Пожалуйста, укажите название')
-            .notEmpty('alias', 'Пожалуйста, укажите псевдоним')
-            .notEmpty('sku', 'Пожалуйста, укажите SKU')
-            .notEmpty('item_code', 'Пожалуйста, укажите код товара')
-            .notEmpty('barcode', 'Пожалуйста, укажите штрихкод')
+            .notEmpty('original-name', 'Пожалуйста, укажите оригинальное название')
+            .notEmpty('item-code', 'Пожалуйста, укажите номер набора')
+            .notEmpty('year-released', 'Пожалуйста, укажите год выпуска')
+            .notEmpty('parts-count', 'Пожалуйста, укажите количество деталей')
+            .notEmpty('minifigures-count', 'Пожалуйста, укажите количество человечков')
+            .notEmpty('price', 'Пожалуйста, укажите цену')
             .result();
         if (!valid) {
             e.preventDefault();

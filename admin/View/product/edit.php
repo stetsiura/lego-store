@@ -28,25 +28,80 @@
                         <p class="form-error-message"></p>
 					</div>
 				</div>
+				<div class="border-bottom margin-bottom-10">
+					<div class="form-group">
+						<?php AdminHtml::label('original-name', 'Оригинальное название:'); ?>
+						<?php AdminHtml::inputText('original_name', 'original-name' , 'form-control', $product['original_name'], 'true', 'false', 'autofocus', 'Оригинальное название продукта...'); ?>
+                        <p class="form-error-message"></p>
+					</div>
+				</div>
                 <div class="border-bottom margin-bottom-10">
                     <div class="form-group">
-                        <?php AdminHtml::label('alias', 'Псевдоним:'); ?>
-                        <?php AdminHtml::inputText('alias', 'alias' , 'form-control', $product['alias'], 'false', 'false', '', 'Псевдоним...'); ?>
+                        <?php AdminHtml::label('item-code', 'Номер:'); ?>
+                        <?php AdminHtml::inputText('item_code', 'item-code' , 'form-control', $product['item_code'], 'false', 'false', '', 'Номер...'); ?>
                         <p class="form-error-message"></p>
                     </div>
                 </div>
-                <div class="border-bottom margin-bottom-10">
+				<div class="border-bottom margin-bottom-10">
+                    <textarea id="description" name="description" style="display: none;"><?= $product['description'] ?></textarea>
+                    <?php AdminHtml::label('description', 'Описание:'); ?>
+                    <div class="summernote" id="description-editor"></div>
+                </div>
+				<div class="border-bottom margin-bottom-10">
                     <div class="form-group">
-                        <?php AdminHtml::label('description', 'Описание:'); ?>
-                        <?php AdminHtml::textarea('description', 'description', 'form-control half-height', $product['description'], '', 'Описание товара...'); ?>
+                        <?php AdminHtml::label('year-released', 'Год выпуска:'); ?>
+                        <?php AdminHtml::inputText('year_released', 'year-released' , 'form-control', $product['year_released'], 'false', 'false', '', 'Год выпуска...'); ?>
+                        <p class="form-error-message"></p>
                     </div>
                 </div>
 				<div class="border-bottom margin-bottom-10">
-					<div>
-						<?php AdminHtml::inputCheckbox('in_stock', 'in-stock', $product['in_stock']); ?>
-						<?php AdminHtml::label('in-stock', 'Есть в наличии'); ?>
+                    <div class="form-group">
+                        <?php AdminHtml::label('parts-count', 'Количество деталей:'); ?>
+                        <?php AdminHtml::inputText('parts_count', 'parts-count' , 'form-control', $product['parts_count'], 'false', 'false', '', 'Количество деталей...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                </div>
+				<div class="border-bottom margin-bottom-10">
+                    <div class="form-group">
+                        <?php AdminHtml::label('minifigures-count', 'Количество человечков:'); ?>
+                        <?php AdminHtml::inputText('minifigures_count', 'minifigures-count' , 'form-control', $product['minifigures_count'], 'false', 'false', '', 'Количество человечков...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                </div>
+				<div class="border-bottom margin-bottom-10">
+                    <div class="form-group">
+                        <?php AdminHtml::label('item-condition', 'Состояние:'); ?>
+                        <?php AdminHtml::select('item_condition', 'item-condition', 'key', 'value', 'form-control', [['key' => 'used', 'value' => 'Б/У'], ['key' => 'new', 'value' => 'Новый']], $product['item_condition']); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                </div>
+				<div id="used-product-details-group" class="<?php AdminHtml::usedProductDetailsBoxClass($product['item_condition']); ?>">
+					<div class="margin-bottom-10">
+						<div>
+							<?php AdminHtml::inputCheckbox('has_all_parts', 'has-all-parts', $product['has_all_parts']); ?>
+							<?php AdminHtml::label('has-all-parts', 'Есть все детали'); ?>
+						</div>
+					</div>
+					<div class="margin-bottom-10">
+						<div>
+							<?php AdminHtml::inputCheckbox('has_instructions', 'has-instructions', $product['has_instructions']); ?>
+							<?php AdminHtml::label('has-instructions', 'Есть инструкция'); ?>
+						</div>
+					</div>
+					<div class="border-bottom margin-bottom-10">
+						<div>
+							<?php AdminHtml::inputCheckbox('has_box', 'has-box', $product['has_box']); ?>
+							<?php AdminHtml::label('has-box', 'Есть коробка'); ?>
+						</div>
 					</div>
 				</div>
+				<div class="border-bottom margin-bottom-10">
+                    <div class="form-group">
+                        <?php AdminHtml::label('item-state', 'Наличие:'); ?>
+                        <?php AdminHtml::select('item_state', 'item-state', 'key', 'value', 'form-control', [['key' => 'order', 'value' => 'Под заказ'], ['key' => 'instock', 'value' => 'В наличии'], ['key' => 'hidden', 'value' => 'Не отображать на сайте']], $product['item_state']); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                </div>
 				<div class="border-bottom margin-bottom-10">
 					<div>
 						<?php AdminHtml::inputCheckbox('is_popular', 'is-popular', $product['is_popular']); ?>
@@ -74,53 +129,7 @@
 						</div>
 					</div>
 				</div>
-
-                <div class="border-bottom margin-bottom-10">
-                    <div class="form-group">
-                        <?php AdminHtml::label('sku', 'SKU:'); ?>
-                        <?php AdminHtml::inputText('sku', 'sku' , 'form-control', $product['sku'], 'false', 'false', '', 'SKU...'); ?>
-                        <p class="form-error-message"></p>
-                    </div>
-                </div>
-                <div class="border-bottom margin-bottom-10">
-                    <div class="form-group">
-                        <?php AdminHtml::label('item_code', 'Код товара:'); ?>
-                        <?php AdminHtml::inputText('item_code', 'item_code' , 'form-control', $product['item_code'], 'false', 'false', '', 'Код товара...'); ?>
-                        <p class="form-error-message"></p>
-                    </div>
-                </div>
-                <div class="border-bottom margin-bottom-10">
-                    <div class="form-group">
-                        <?php AdminHtml::label('barcode', 'Штрихкод:'); ?>
-                        <?php AdminHtml::inputText('barcode', 'barcode' , 'form-control', $product['barcode'], 'false', 'false', '', 'Штрихкод...'); ?>
-                        <p class="form-error-message"></p>
-                    </div>
-                </div>
-                <div class="border-bottom margin-bottom-10">
-                    <div class="form-group">
-                        <?php AdminHtml::label('ingredients', 'Составляющие:'); ?>
-                        <?php AdminHtml::textarea('ingredients', 'ingredients', 'form-control half-height', $product['ingredients'], '', 'Составляющие...'); ?>
-                    </div>
-                </div>
-                <div class="border-bottom margin-bottom-10">
-                    <div class="form-group">
-                        <?php AdminHtml::label('specification', 'Спецификация:'); ?>
-                        <?php AdminHtml::textarea('specification', 'specification', 'form-control half-height', $product['specification'], '', 'Спецификация...'); ?>
-                    </div>
-                </div>
-
-                <div class="border-bottom margin-bottom-10">
-                    <textarea id="usage" name="product_usage" style="display: none;"><?= $product['product_usage'] ?></textarea>
-                    <?php AdminHtml::label('usage', 'Использование:'); ?>
-                    <div class="summernote" id="usage-editor"></div>
-                </div>
-
-                <div class="border-bottom margin-bottom-10">
-                    <textarea id="warning" name="warning" style="display: none;"><?= $product['warning'] ?></textarea>
-                    <?php AdminHtml::label('warning', 'Предупреждение:'); ?>
-                    <div class="summernote" id="warning-editor"></div>
-                </div>
-
+                
 				<div class="form-group">
 					<input type="submit" class="btn btn-primary" value="Сохранить" />
 				</div>
@@ -131,7 +140,6 @@
 
 <?php Asset::js('/admin/assets/js/summernote/summernote'); ?>
 <?php Asset::js('/admin/assets/js/summernote/lang/summernote-ru-RU'); ?>
-<?php Asset::js('/admin/assets/js/transliteration'); ?>
 <?php Asset::js('/admin/assets/js/validation'); ?>
 <?php Asset::js('/admin/assets/js/product/product'); ?>
 

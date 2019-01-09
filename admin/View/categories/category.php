@@ -239,13 +239,13 @@
                         <p class="form-error-message"></p>
                     </div>
                     <div class="form-group">
-                        <?php AdminHtml::label('description', 'Описание:'); ?>
-                        <?php AdminHtml::textarea('description', 'description', 'form-control half-height', '', '', 'Описание категории...'); ?>
+                        <?php AdminHtml::label('cover_color', 'Цвет обложки (HEX):'); ?>
+                        <?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', '', 'false', 'false', '', 'Цвет обложки (HEX)...'); ?>
                         <p class="form-error-message"></p>
                     </div>
                     <div class="form-group">
-                        <?php AdminHtml::label('cover_color', 'Цвет обложки (HEX):'); ?>
-                        <?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', '', 'false', 'false', '', 'Цвет обложки (HEX)...'); ?>
+                        <?php AdminHtml::label('description', 'Описание:'); ?>
+                        <?php AdminHtml::textarea('description', 'description', 'form-control half-height', '', '', 'Описание категории...'); ?>
                         <p class="form-error-message"></p>
                     </div>
                     <div class="row">

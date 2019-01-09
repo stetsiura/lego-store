@@ -71,169 +71,115 @@ class ProductRepository extends Model
 	{
 		return [
 			'id' => -1,
-			'name' => '',
-			'alias' => '',
+            'name' => '',
+            'original_name' => '',
             'description' => '',
-			'category_id' => $categoryId,
-			'sku' => '',
-			'item_code' => '',
-			'barcode' => '',
-			'ingredients' => '',
-			'specification' => '',
-			'product_usage' => '',
-            'warning' => '',
-            'price' => '0',
-			'actual_price' => '0',
+            'item_code' => '',
+            'year_released' => '',
+            'parts_count' => '',
+            'minifigures_count' => '',
+            'item_condition' => 'used',
+            'has_all_parts' => true,
+            'has_instructions' => true,
+            'has_box' => false,
+            'item_state' => 'order',
             'has_discount' => false,
-			'in_stock' => true,
-			'is_popular' => false,
+            'price' => '0',
+            'actual_price' => '0',
+            'is_popular' => false,
+            'description' => '',
+            'category_id' => $categoryId,
 			'big_image_url' => ''
 		];
 	}
 	
 	public function addProduct($params)
 	{
-		$params = $this->prepareCheckboxes($params, ['has_discount', 'in_stock', 'is_popular']);
+        $params = $this->prepareCheckboxes($params, ['is_popular','has_discount', 'has_all_parts', 'has_instructions', 'has_box']);
+        
+        $fileNames = $this->file->processProductFile(self::IMAGE_INPUT_NAME);
 
-        if ($this->file->fileUploaded(self::IMAGE_INPUT_NAME)) {
-
-            $fileNames = $this->file->processProductFile(self::IMAGE_INPUT_NAME);
-
-            $this->db->query(
-                $this->qb
-                    ->insert('product')
-                    ->set([
-                        'name' => trim($params['name']),
-                        'alias' => trim($params['alias']),
-                        'sku' => trim($params['sku']),
-                        'description' => $params['description'],
-                        'item_code' => trim($params['item_code']),
-                        'barcode' => trim($params['barcode']),
-                        'ingredients' => $params['ingredients'],
-                        'specification' => $params['specification'],
-                        'product_usage' => \Sanitize::removeStyles($params['product_usage']),
-                        'warning' => \Sanitize::removeStyles($params['warning']),
-                        'price' => trim($params['price']),
-                        'actual_price' => trim($params['actual_price']),
-                        'has_discount' => $params['has_discount'],
-                        'is_deleted' => false,
-                        'in_stock' => $params['in_stock'],
-                        'is_popular' => $params['is_popular'],
-                        'small_image_url' => $fileNames['thumbnail_basename'],
-                        'big_image_url' => $fileNames['original_basename'],
-                        'creation_date' => date('Y-m-d H:i:s'),
-                        'category_id' => $params['category_id']
-                    ])
-                    ->sql(),
-                $this->qb->values
-            );
-
-        } else {
-
-            $this->db->query(
-                $this->qb
-                    ->insert('product')
-                    ->set([
-                        'name' => trim($params['name']),
-                        'alias' => trim($params['alias']),
-                        'sku' => trim($params['sku']),
-                        'description' => $params['description'],
-                        'item_code' => trim($params['item_code']),
-                        'barcode' => trim($params['barcode']),
-                        'ingredients' => $params['ingredients'],
-                        'specification' => $params['specification'],
-                        'product_usage' => \Sanitize::removeStyles($params['product_usage']),
-                        'warning' => \Sanitize::removeStyles($params['warning']),
-                        'price' => trim($params['price']),
-                        'actual_price' => trim($params['actual_price']),
-                        'has_discount' => $params['has_discount'],
-                        'is_deleted' => false,
-                        'in_stock' => $params['in_stock'],
-                        'is_popular' => $params['is_popular'],
-                        'creation_date' => date('Y-m-d H:i:s'),
-                        'category_id' => $params['category_id']
-                    ])
-                    ->sql(),
-                $this->qb->values
-            );
-        }
+        $this->db->query(
+            $this->qb
+                ->insert('product')
+                ->set([
+                    'name' => trim($params['name']),
+                    'original_name' => trim($params['original_name']),
+                    'item_code' => trim($params['item_code']),
+                    'description' => \Sanitize::removeStyles($params['description']),
+                    'year_released' => trim($params['year_released']),
+                    'parts_count' => trim($params['parts_count']),
+                    'minifigures_count' => trim($params['minifigures_count']),
+                    'item_condition' => $params['item_condition'],
+                    'has_all_parts' => $params['has_all_parts'],
+                    'has_instructions' => $params['has_instructions'],
+                    'has_box' => $params['has_box'],
+                    'item_state' => $params['item_state'],
+                    'has_discount' => $params['has_discount'],
+                    'has_discount' => $params['has_discount'],
+                    'price' => trim($params['price']),
+                    'actual_price' => trim($params['actual_price']),
+                    'has_discount' => $params['has_discount'],
+                    'is_deleted' => false,
+                    'is_popular' => $params['is_popular'],
+                    'creation_date' => date('Y-m-d H:i:s'),
+                    'small_image_url' => $fileNames['thumbnail_basename'],
+                    'big_image_url' => $fileNames['original_basename'],
+                    'category_id' => $params['category_id']
+                ])
+                ->sql(),
+            $this->qb->values
+        );
 	}
 	
 	public function editProduct($params)
 	{
-        $params = $this->prepareCheckboxes($params, ['has_discount', 'in_stock', 'is_popular']);
+        $params = $this->prepareCheckboxes($params, ['is_popular','has_discount', 'has_all_parts', 'has_instructions', 'has_box']);
 
         $product = $this->product($params['product_id']);
 
-        if ($this->file->fileUploaded(self::IMAGE_INPUT_NAME)) {
+        $fileNames = $this->file->processProductFile(self::IMAGE_INPUT_NAME);
 
+        if (empty($fileNames['original_basename'])) {
+            $fileNames['original_basename'] = $product['big_image_url'];
+            $fileNames['thumbnail_basename'] = $product['small_image_url'];
+        } else {
             $this->file->removeProductOriginalImage($product['big_image_url']);
             $this->file->removeProductThumbnailImage($product['small_image_url']);
-
-            $fileNames = $this->file->processProductFile(self::IMAGE_INPUT_NAME);
-
-            $this->db->query(
-                $this->qb
-                    ->update('product')
-                    ->set([
-                        'name' => trim($params['name']),
-                        'alias' => trim($params['alias']),
-                        'sku' => trim($params['sku']),
-                        'description' => $params['description'],
-                        'item_code' => trim($params['item_code']),
-                        'barcode' => trim($params['barcode']),
-                        'ingredients' => $params['ingredients'],
-                        'specification' => $params['specification'],
-                        'product_usage' => \Sanitize::removeStyles($params['product_usage']),
-                        'warning' => \Sanitize::removeStyles($params['warning']),
-                        'price' => trim($params['price']),
-                        'actual_price' => trim($params['actual_price']),
-                        'has_discount' => $params['has_discount'],
-                        'is_deleted' => false,
-                        'in_stock' => $params['in_stock'],
-                        'is_popular' => $params['is_popular'],
-                        'small_image_url' => $fileNames['thumbnail_basename'],
-                        'big_image_url' => $fileNames['original_basename'],
-                        'creation_date' => date('Y-m-d H:i:s'),
-                        'category_id' => $params['category_id']
-                    ])
-                    ->where('id', $product['id'])
-                    ->limit(1)
-                    ->sql(),
-                $this->qb->values
-            );
-
-        } else {
-
-            $this->db->query(
-                $this->qb
-                    ->update('product')
-                    ->set([
-                        'name' => trim($params['name']),
-                        'alias' => trim($params['alias']),
-                        'sku' => trim($params['sku']),
-                        'description' => $params['description'],
-                        'item_code' => trim($params['item_code']),
-                        'barcode' => trim($params['barcode']),
-                        'ingredients' => $params['ingredients'],
-                        'specification' => $params['specification'],
-                        'product_usage' => \Sanitize::removeStyles($params['product_usage']),
-                        'warning' => \Sanitize::removeStyles($params['warning']),
-                        'price' => trim($params['price']),
-                        'actual_price' => trim($params['actual_price']),
-                        'has_discount' => $params['has_discount'],
-                        'is_deleted' => false,
-                        'in_stock' => $params['in_stock'],
-                        'is_popular' => $params['is_popular'],
-                        'creation_date' => date('Y-m-d H:i:s'),
-                        'category_id' => $params['category_id']
-                    ])
-                    ->where('id', $product['id'])
-                    ->limit(1)
-                    ->sql(),
-                $this->qb->values
-            );
         }
+
+        $this->db->query(
+            $this->qb
+                ->update('product')
+                ->set([
+                    'name' => trim($params['name']),
+                    'original_name' => trim($params['original_name']),
+                    'item_code' => trim($params['item_code']),
+                    'description' => \Sanitize::removeStyles($params['description']),
+                    'year_released' => trim($params['year_released']),
+                    'parts_count' => trim($params['parts_count']),
+                    'minifigures_count' => trim($params['minifigures_count']),
+                    'item_condition' => $params['item_condition'],
+                    'has_all_parts' => $params['has_all_parts'],
+                    'has_instructions' => $params['has_instructions'],
+                    'has_box' => $params['has_box'],
+                    'item_state' => $params['item_state'],
+                    'has_discount' => $params['has_discount'],
+                    'has_discount' => $params['has_discount'],
+                    'price' => trim($params['price']),
+                    'actual_price' => trim($params['actual_price']),
+                    'has_discount' => $params['has_discount'],
+                    'is_popular' => $params['is_popular'],
+                    'creation_date' => date('Y-m-d H:i:s'),
+                    'small_image_url' => $fileNames['thumbnail_basename'],
+                    'big_image_url' => $fileNames['original_basename'],
+                    'category_id' => $params['category_id']
+                ])
+                ->where('id', $product['id'])
+                ->limit(1)
+                ->sql(),
+            $this->qb->values
+        );
 	}
 	
 	public function moveProduct($productId, $categoryId)

@@ -315,6 +315,13 @@ class AdminHtml
         echo $className;
     }
 
+    public static function usedProductDetailsBoxClass($condition = 'used')
+    {
+        $className = $condition == 'used' ? "" : "collapsed";
+
+        echo $className;
+    }
+
     public static function inStock($inStock)
     {
         $stockWord = '';

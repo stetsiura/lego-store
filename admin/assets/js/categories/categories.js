@@ -57,15 +57,6 @@ $(document).ready(function() {
 			}
 		}
 	});
-	
-	$('#moving-category-tree').jstree({
-		"core" : {
-			"themes" : {
-				"variant" : "small",
-				"stripes" : true
-			}
-		}
-	});
 
     $('.moving-product-btn').click(function() {
         var productId = $(this).attr('data-product-id');
@@ -85,12 +76,6 @@ $(document).ready(function() {
 		var selectedCategoryId = data.node.li_attr['data-cat-id'];
 
 		navigateToCategory(selectedCategoryId);
-	});
-	
-	$('#moving-category-tree').on("select_node.jstree", function (e, data) {
-		var selectedCategoryId = data.node.li_attr['data-cat-id'];
-
-		setMovingCategoryDialogInputValues(selectedCategoryId);
 	});
 	
 	$('#moving-product-categories-tree').on("select_node.jstree", function (e, data) {
@@ -116,8 +101,11 @@ $(document).ready(function() {
     editForm.submit(function(e) {
         var valid = validation
             .init()
-            .notEmpty('name', 'Пожалуйста, укажите название')
-            .notEmpty('alias', 'Пожалуйста, укажите псевдоним')
+			.notEmpty('name', 'Пожалуйста, укажите название')
+			.notEmpty('original-name', 'Пожалуйста, укажите оригинальное название')
+			.notEmpty('alias', 'Пожалуйста, укажите псевдоним')
+			.notEmpty('cover-color', 'Пожалуйста, укажите цвет обложки')
+			.notEmpty('description', 'Пожалуйста, укажите описание')
             .result();
         if (!valid) {
             e.preventDefault();
@@ -129,8 +117,11 @@ $(document).ready(function() {
     createForm.submit(function(e) {
         var valid = validation
             .init()
-            .notEmpty('create-name', 'Пожалуйста, укажите название')
-            .notEmpty('create-alias', 'Пожалуйста, укажите псевдоним')
+            .notEmpty('name', 'Пожалуйста, укажите название')
+			.notEmpty('original-name', 'Пожалуйста, укажите оригинальное название')
+			.notEmpty('alias', 'Пожалуйста, укажите псевдоним')
+			.notEmpty('cover-color', 'Пожалуйста, укажите цвет обложки')
+			.notEmpty('description', 'Пожалуйста, укажите описание')
             .result();
         if (!valid) {
             e.preventDefault();

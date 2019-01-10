@@ -234,9 +234,8 @@ class ProductRepository extends Model
                 ->select()
                 ->from('product')
                 ->where('name', '%' . trim($pageParams['term']) . '%', 'LIKE')
+                ->orWhere('original_name', '%' . trim($pageParams['term']) . '%', 'LIKE')
                 ->orWhere('item_code', trim($pageParams['term']), '=')
-                ->orWhere('sku', trim($pageParams['term']), '=')
-                ->orWhere('barcode', trim($pageParams['term']), '=')
                 ->orderBy($sort, $order)
                 ->limitOffset($offset, self::ITEMS_PER_PAGE)
                 ->sql(),
@@ -251,12 +250,10 @@ class ProductRepository extends Model
         $count = $this->db->query(
             $this->qb
                 ->select("count(id) AS 'count'")
-                ->from('user')
                 ->from('product')
                 ->where('name', '%' . trim($term) . '%', 'LIKE')
+                ->orWhere('original_name', '%' . trim($term) . '%', 'LIKE')
                 ->orWhere('item_code', trim($term), '=')
-                ->orWhere('sku', trim($term), '=')
-                ->orWhere('barcode', trim($term), '=')
                 ->sql(),
             $this->qb->values
         )->firstOrDefault();

@@ -11,9 +11,9 @@
             </div>
             <form action="/admin/product/search-post/" method="post">
                 <div class="form-group">
-                    <?php AdminHtml::label('term', 'Поиск по названию, коду или штрихкоду:') ?>
+                    <?php AdminHtml::label('term', 'Поиск по номеру или названию:') ?>
                     <div class="input-group">
-                        <?php AdminHtml::inputText('term', 'term', 'form-control', $term, 'false', 'false', 'autofocus', 'Название, код или штрихкод...'); ?>
+                        <?php AdminHtml::inputText('term', 'term', 'form-control', $term, 'false', 'false', 'autofocus', 'Номер или название...'); ?>
                         <span class="input-group-btn">
                         <button class="btn btn-primary" type="submit">Поиск</button>
                     </span>
@@ -41,7 +41,7 @@
                         <tr>
                             <th>Картинка</th>
                             <th>Название</th>
-                            <th>ID</th>
+                            <th>Номер</th>
                             <th>Цена</th>
                             <th>Действия</th>
                         </tr>
@@ -53,8 +53,8 @@
                                     <img src="<?php AdminHtml::productThumbnailImage($product['small_image_url']); ?>" >
                                 </td>
                                 <td>
-                                    <strong><?= $product['name'] ?></strong>
-                                    <?php AdminHtml::inStock($product['in_stock']); ?>
+                                    <strong><?= $product['original_name'] ?></strong>
+                                    <?php AdminHtml::inStock($product['item_state']); ?>
                                     <?php AdminHtml::isPopular($product['is_popular']); ?>
                                 </td>
                                 <td>
@@ -69,7 +69,7 @@
                                             Опции <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="/admin/product/edit/<?= $product['id'] ?>/in-category/<?= $product['category_id'] ?>" target="_blank">Редактировать</a></li>
+                                            <li><a href="/admin/product/edit/<?= $product['id'] ?>/in-category/<?= $product['category_id'] ?>">Редактировать</a></li>
                                             <li><a href="#" data-product-id="<?= $product['id'] ?>" class="moving-product-btn" data-toggle="modal" data-target="#moving-product-modal">Перенести</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="#" class="removing-product-btn" data-toggle="modal" data-target="#removing-product-modal" data-product-id="<?= $product['id'] ?>" data-product-name="<?= $product['name'] ?>" data-category-id="<?= $product['category_id'] ?>">Удалить</a></li>

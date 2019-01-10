@@ -5,6 +5,7 @@
 \content\uploads\categories\logo
 \content\uploads\products\original
 \content\uploads\products\thumb
+\content\uploads\news
 \content\uploads\news\cover\original
 \content\uploads\news\cover\thumb
 \content\uploads\slider

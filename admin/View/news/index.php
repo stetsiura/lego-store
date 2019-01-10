@@ -40,7 +40,7 @@
                                     <strong><?= $item['title'] ?></strong>
                                 </td>
                                 <td>
-                                    <?= DateTime::createFromFormat('Y-m-d h:i:s', $item['creation_date'])->format('d-m-Y') ?>
+                                    <?= DateTime::createFromFormat('Y-m-d h:i:s', $item['creation_date'])->format('d.m.Y') ?>
                                 </td>
                                 <td>
                                     <?php AdminHtml::isPublished($item['is_published']) ?>

@@ -87,6 +87,7 @@ CREATE TABLE slide (
 	alias VARCHAR(255),
 	button_url VARCHAR(500),
 	button_text VARCHAR(200),
+	button_color VARCHAR(255),
 	header_text VARCHAR(500),
 	slide_description VARCHAR(1000),
 	image_url VARCHAR(500),

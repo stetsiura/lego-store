@@ -33,9 +33,9 @@
 				</div>
 				<div class="panel-body">
 					<div class="slide-image">
-						<img src="<?= AdminHtml::sliderImage($slide['image_url']); ?>">
+						<img id="slider-image" src="<?= AdminHtml::sliderImage($slide['image_url']); ?>">
 					</div>
-					<form id="slider-image" action="/admin/content/slider/update-slide/" method="post" enctype="multipart/form-data">
+					<form action="/admin/content/slider/update-slide/" method="post" enctype="multipart/form-data">
                         <?php AdminHtml::inputHidden('alias', 'alias-update', $alias); ?>
                         <?php AdminHtml::inputHidden('id', 'id', $slide['id']); ?>
 						<?php AdminHtml::inputHidden('position', 'position', $slide['position']); ?>
@@ -47,8 +47,24 @@
                             <p class="help-block">Изображение должно быть <b>1000px</b> по ширине и <b>420px</b> по высоте.</p>
 						</div>
 						<div class="form-group">
-							<?php AdminHtml::label('url', 'Куда должен вести слайд:'); ?>
-							<?php AdminHtml::inputText('url', 'url', 'form-control', $slide['url'], 'false', 'false', '', 'Относительная ссылка...'); ?>
+							<?php AdminHtml::label('button-text', 'Текст в кнопке слайда:'); ?>
+							<?php AdminHtml::inputText('button_text', 'button-text', 'form-control', $slide['button_text'], 'false', 'false', '', 'Текст в кнопке слайда...'); ?>
+						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('button-url', 'Ссылка в кнопке слайда:'); ?>
+							<?php AdminHtml::inputText('button_url', 'button-url', 'form-control', $slide['button_url'], 'false', 'false', '', 'Относительная ссылка...'); ?>
+						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('button-color', 'Цвет кнопки слайда (HEX):'); ?>
+							<?php AdminHtml::inputText('button_color', 'button-color', 'form-control', $slide['button_color'], 'false', 'false', '', 'Цвет кнопки слайда (HEX)...'); ?>
+						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('slide-description', 'Описание слайда:'); ?>
+							<?php AdminHtml::textarea('slide_description', 'slide-description', 'form-control half-height', $slide['slide_description'], '', 'Описание слайда...'); ?>
+						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('cover-color', 'Цвет обложки слайда (HEX):'); ?>
+							<?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', $slide['cover_color'], 'false', 'false', '', 'Цвет обложки слайда (HEX)...'); ?>
 						</div>
 						<div class="form-group">
 							<input type="submit" class="btn btn-success" value="Сохранить">

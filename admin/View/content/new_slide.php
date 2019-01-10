@@ -47,9 +47,26 @@
 							<p class="help-block">Изображение должно быть <b>1000px</b> по ширине и <b>420px</b> по высоте.</p>
 						</div>
 						<div class="form-group">
-							<?php AdminHtml::label('url', 'Куда должен вести слайд:'); ?>
-							<?php AdminHtml::inputText('url', 'url', 'form-control', '', 'false', 'false', '', 'Относительная ссылка...'); ?>
+							<?php AdminHtml::label('button-text', 'Текст в кнопке слайда:'); ?>
+							<?php AdminHtml::inputText('button_text', 'button-text', 'form-control', '', 'false', 'false', '', 'Текст в кнопке слайда...'); ?>
 						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('button-url', 'Ссылка в кнопке слайда:'); ?>
+							<?php AdminHtml::inputText('button_url', 'button-url', 'form-control', '', 'false', 'false', '', 'Относительная ссылка...'); ?>
+						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('button-color', 'Цвет кнопки слайда (HEX):'); ?>
+							<?php AdminHtml::inputText('button_color', 'button-color', 'form-control', '', 'false', 'false', '', 'Цвет кнопки слайда (HEX)...'); ?>
+						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('slide-description', 'Описание слайда:'); ?>
+							<?php AdminHtml::textarea('slide_description', 'slide-description', 'form-control half-height', '', '', 'Описание слайда...'); ?>
+						</div>
+						<div class="form-group">
+							<?php AdminHtml::label('cover-color', 'Цвет обложки слайда (HEX):'); ?>
+							<?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', '', 'false', 'false', '', 'Цвет обложки слайда (HEX)...'); ?>
+						</div>
+
 						<div class="form-group">
 							<input type="submit" class="btn btn-success" value="Сохранить">
 						</div>

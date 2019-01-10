@@ -66,8 +66,12 @@ class ContentRepository extends Model
                 $this->qb
                     ->insert('slide')
                     ->set([
-                        'url' => trim($params['url']),
-                        'alias' => $params['alias'],
+                        'button_url' => trim($params['button_url']),
+						'button_text' => trim($params['button_text']),
+						'button_color' => trim($params['button_color']),
+						'slide_description' => trim($params['slide_description']),
+						'cover_color' => trim($params['cover_color']),
+						'alias' => $params['alias'],
                         'position' => $position,
                         'image_url' => $fileNames['basename']
                     ])
@@ -80,8 +84,12 @@ class ContentRepository extends Model
                 $this->qb
                     ->insert('slide')
                     ->set([
-                        'url' => trim($params['url']),
-                        'alias' => $params['alias'],
+                        'button_url' => trim($params['button_url']),
+						'button_text' => trim($params['button_text']),
+						'button_color' => trim($params['button_color']),
+						'slide_description' => trim($params['slide_description']),
+						'cover_color' => trim($params['cover_color']),
+						'alias' => $params['alias'],
                         'position' => $position
                     ])
                     ->sql(),
@@ -106,7 +114,11 @@ class ContentRepository extends Model
                 $this->qb
                     ->update('slide')
                     ->set([
-                        'url' => trim($params['url']),
+                        'button_url' => trim($params['button_url']),
+						'button_text' => trim($params['button_text']),
+						'button_color' => trim($params['button_color']),
+						'slide_description' => trim($params['slide_description']),
+						'cover_color' => trim($params['cover_color']),
                         'image_url' => $fileNames['basename']
                     ])
                     ->where('id', $params['id'], '=')
@@ -119,7 +131,11 @@ class ContentRepository extends Model
                 $this->qb
                     ->update('slide')
                     ->set([
-                        'url' => trim($params['url'])
+                        'button_url' => trim($params['button_url']),
+						'button_text' => trim($params['button_text']),
+						'button_color' => trim($params['button_color']),
+						'slide_description' => trim($params['slide_description']),
+						'cover_color' => trim($params['cover_color']),
                     ])
                     ->where('id', $params['id'], '=')
                     ->limit(1)

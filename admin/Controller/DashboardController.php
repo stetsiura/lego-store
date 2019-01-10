@@ -10,7 +10,7 @@ class DashboardController extends AdminController
 	
 	public function index()
 	{
-		$this->view->setTitle('Панель управления MINISO');
+		$this->view->setTitle('Панель управления');
 		
 		$this->view->render('dashboard/index', $this->data);
 	}

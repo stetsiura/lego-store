@@ -30,9 +30,6 @@
                     </a>
                 </li>
             </ul>
-            <!--<div class="payment-methods">
-                <img src="/app/assets/img/common/footer-payment-methods.png" />
-            </div>-->
         </div>
     </div>
     <div class="container">

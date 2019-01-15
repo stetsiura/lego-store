@@ -1,17 +1,19 @@
 ﻿(function() {
     
     $(document).ready(function() {
-        $('#mobile-toggle').click(function() {
-            var mobileMenu = $('#mobile-nav');
+        $('#nav-toggle').click(function() {
+            var mobileMenu = $('#menu');
             mobileMenu.slideToggle(300);
         });
     });
     
     $(window).resize(function() {
-        var windowWidth = $(window).width();
+        var windowWidth = $(window).width(),
+            mobileMenu = $('#menu');
         
         if (windowWidth > settings.mobileBreakPoint) {
-            var mobileMenu = $('#mobile-nav');
+            mobileMenu.show();
+        } else {
             mobileMenu.hide();
         }
     });

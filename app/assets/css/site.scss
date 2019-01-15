@@ -28,6 +28,11 @@ body {
         width: auto;
         margin: 0 25px;
     }
+
+    @media screen and (max-width: 800px) {
+        width: auto;
+        margin: 0 15px;
+    }
 }
 
 .clearfix {
@@ -43,5 +48,7 @@ body {
 img {
     border: none;
 }
+
+/* Imports */
 
 @import 'common/_header.scss';

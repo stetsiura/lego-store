@@ -38,7 +38,7 @@
             </ul>
             <ul class="right-side">
                 <li><a href="#" class="cart"><img src="/app/assets/img/common/cart-icon.png" />Корзина<span>0</span></a></li>
-                <li><a href="#">Вход</a></li>
+                <li><a href="#">Алексей Стецюра</a></li>
             </ul>
         </nav>
         <button id="nav-toggle" class="nav-toggle">

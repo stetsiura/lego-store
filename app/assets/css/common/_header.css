@@ -107,7 +107,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1450px) {
   .header .container nav ul.left-side li {
     margin-left: 20px;
   }
@@ -119,7 +119,7 @@
   }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1260px) {
   .header .container nav {
     display: none;
     position: initial;

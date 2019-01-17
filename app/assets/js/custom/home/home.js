@@ -1,7 +1,7 @@
 $(document).ready(function () {
     imageSlider = new Slider('main-slider');
 
-    $('.news-title-fix-height').matchHeight();
+    /* $('.news-title-fix-height').matchHeight();
     $('.fix-height').matchHeight();
 
     $('.shop-item').click(function () {
@@ -12,9 +12,9 @@ $(document).ready(function () {
         button.addClass('active').siblings('.shop-item').removeClass('active');
         map.siblings('.map').hide();
         map.show();
-    });
+    }); */
 });
 
 $(window).resize(function() {
-    $('.news-title-fix-height').matchHeight();
+    //$('.news-title-fix-height').matchHeight();
 });

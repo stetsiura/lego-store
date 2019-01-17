@@ -5,7 +5,7 @@ var Slider = function (sliderId) {
 
     this.elements = {
         slider: sliderNode,
-        sliderBox: sliderNode.find('.slider-box'),
+        sliderBox: sliderNode.find('.slides-container'),
         slides: sliderNode.find('.slide'),
         controlLeft: sliderNode.find('.slide-control.prev'),
         controlRight: sliderNode.find('.slide-control.next')
@@ -22,10 +22,12 @@ var Slider = function (sliderId) {
     var self = this;
 
     this.elements.controlLeft.click(function () {
+        console.log('left');
         self.navigate(-1);
     });
 
     this.elements.controlRight.click(function () {
+        console.log('right');
         self.navigate(1);
     });
 };
@@ -56,6 +58,7 @@ Slider.prototype.navigate = function (direction) {
 
 Slider.prototype.animate = function () {
     var left = this.settings.currentSlide * this.settings.slideWidth;
+    console.log(left);
     this.elements.sliderBox.css('left', -1 * left + 'px');
 };
 

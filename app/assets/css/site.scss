@@ -11,6 +11,12 @@ body {
     background-color: #ffd100;
 }
 
+/* Font colors */
+
+.color-yellow {
+    color: #ffd100;
+}
+
 /* Misc */
 
 .container {
@@ -18,21 +24,29 @@ body {
     width: 1260px;
     margin: 0 auto;
 
+    
     &:after {
         content: "";
         display: block;
         clear: both;
     }
+    
 
-    @media screen and (max-width: 1300px) {
+    @media screen and (max-width: 1430px) {
         width: auto;
-        margin: 0 25px;
+        margin: 0 80px;
     }
 
     @media screen and (max-width: 800px) {
         width: auto;
-        margin: 0 15px;
+        margin: 0 60px;
     }
+
+    @media screen and (max-width: 500px) {
+        width: auto;
+        margin: 0 30px;
+    }
+
 }
 
 .clearfix {
@@ -52,3 +66,4 @@ img {
 /* Imports */
 
 @import 'common/_header.scss';
+@import 'home/_home.scss';

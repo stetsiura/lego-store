@@ -6,7 +6,7 @@ use \Engine\Core\Config\Config;
 
 class Image
 {
-	const PRODUCT_IMAGE_THUMB_SCALE = "160x220";
+	const PRODUCT_IMAGE_THUMB_SCALE = "250x250";
 	
 	const PRODUCT_IMAGE_ORIGINAL_SCALE = "500x700";
 

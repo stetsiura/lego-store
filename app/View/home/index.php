@@ -53,8 +53,17 @@
     <a class="slide-control next"><i class="fa fa-chevron-right"></i></a>
 </div>
 
+<div class="section bg-yellow">
+    <div class="container">
+        <div class="heading">
+            <h2 class="color-blue">Популярные наборы</h2>
+        </div>
+        <?php $this->theme->block('partials/item_slider', ['items' => $popularProducts]); ?>
+    </div>
+</div>
+
 <?php Asset::js('/app/assets/js/custom/image-slider'); ?>
-<?php Asset::js('/app/assets/js/custom/product-slider'); ?>
+<?php Asset::js('/app/assets/js/custom/item-slider'); ?>
 <?php Asset::js('/app/assets/js/custom/home/home'); ?>
 
 <?php $this->theme->footer(); ?>

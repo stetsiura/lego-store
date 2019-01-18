@@ -193,34 +193,105 @@ class Html
         }
     }
 
-    public static function productCasing($count) {
+    public static function partsCasing($count) {
         $mod100 = $count % 100;
 
         $mod10 = $count % 10;
 
         if ($mod100 >= 11 && $mod100 <= 20) {
-            return "товаров";
+            return "деталей";
         } else {
             switch($mod10) {
                 case 1:
-                    return "товар";
+                    return "деталь";
                 case 2:
                 case 3:
                 case 4:
-                    return "товара";
+                    return "детали";
                 case 5:
                 case 6:
                 case 7:
                 case 8:
                 case 9:
                 case 0:
-                    return "товаров";
+                    return "деталей";
                 default:
-                    return "товар";
+                    return "деталь";
             }
         }
 
-        return "товар";
+        return "деталь";
+    }
+
+    public static function minifiguresCasing($count) {
+        $mod100 = $count % 100;
+
+        $mod10 = $count % 10;
+
+        if ($mod100 >= 11 && $mod100 <= 20) {
+            return "фигурок";
+        } else {
+            switch($mod10) {
+                case 1:
+                    return "фигурка";
+                case 2:
+                case 3:
+                case 4:
+                    return "фигурки";
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 0:
+                    return "фигурок";
+                default:
+                    return "фигурка";
+            }
+        }
+
+        return "фигурка";
+    }
+
+    public static function productCasing($count) {
+        $mod100 = $count % 100;
+
+        $mod10 = $count % 10;
+
+        if ($mod100 >= 11 && $mod100 <= 20) {
+            return "наборов";
+        } else {
+            switch($mod10) {
+                case 1:
+                    return "набор";
+                case 2:
+                case 3:
+                case 4:
+                    return "набора";
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 0:
+                    return "наборов";
+                default:
+                    return "набор";
+            }
+        }
+
+        return "набор";
+    }
+
+    public static function buyButtonText($itemState) {
+        switch ($itemState) {
+            case 'order':
+                return 'Заказать';
+            case 'instock':
+                return 'Купить';
+            default:
+                return 'Заказать';
+        }
     }
 
     public static function sortOrderSelected($sort, $order, $pageParams)

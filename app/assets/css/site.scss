@@ -17,8 +17,43 @@ body {
     color: #ffd100;
 }
 
+.color-blue {
+    color: #006db7;
+}
+
+/* Margins */
+
+.margin-b-40 {
+    margin-bottom: 40px;
+}
+
+/* Paddings */
+
+.padding-b-40 {
+    padding-bottom: 40px;
+}
 
 /* Misc */
+
+.section {
+    display: block;
+    width: 100%;
+}
+
+.heading {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+
+    h1, h2, h3, h4, h5, h6 {
+        display: block;
+        margin: 0;
+        padding: 40px 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
 
 .container {
     display: block;
@@ -60,6 +95,227 @@ body {
 
 img {
     border: none;
+}
+
+/* Notifications */
+
+.notification {
+    display: block;
+    position: fixed;
+    z-index: 9999;
+    bottom: 100px;
+    right: 0px;
+    width: 300px;
+    background: #ededed;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    transform: translateX(100%);
+    transition: transform .2s ease;
+
+    &.shown {
+        transform: translateX(0%);
+    }
+
+    &.warning {
+        background: orangered;
+    }
+
+    &.success {
+        background: green;
+    }
+
+    i {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        font-size: 24px;
+        color: #fff;
+        transform: translateY(-50%);
+    }
+
+    .notification-content {
+        display: block;
+        box-sizing: border-box;
+        padding: 15px 15px 15px 50px;
+        font-size: 12px;
+        color: #fff;
+
+        > a {
+            color: #fff;
+            font-weight: 500;
+        }
+    }
+
+    @media sreen and (max-width: 305px) {
+        width: 100%;
+    }
+}
+
+/* Items slider */
+
+.items-slider {
+    display: block;
+    margin: 0 -20px;
+    position: relative;
+
+    .slider-wrap {
+
+        position: relative;
+        overflow: hidden;
+
+        .slider-box {
+            display: block;
+            position: relative;
+            left: 0;
+            width: 10000px;
+            transition: left .5s ease;
+    
+            .slider-item {
+                display: block;
+                float: left;
+                width: 300px;
+                margin: 0 20px;
+    
+                .slider-item-product {
+                    display: block;
+                    box-sizing: border-box;
+                    width: 100%;
+                    border-radius: 8px;
+                    background: #fff;
+                    padding: 10px;
+    
+                    .image {
+                        display: block;
+                        text-decoration: none;
+                        cursor: pointer;
+                        width: 100%;
+                        height: 200px;
+    
+                        img {
+                            display: block;
+                            max-width: 100%;
+                            max-height: 100%;
+                            height: auto;
+                            width: auto;
+                            margin: 0 auto;
+                        }
+                    }
+    
+                    .title {
+                        display: block;
+                        text-decoration: none;
+                        cursor: pointer;
+                        width: 90%;
+                        height: 25px;
+                        min-height: 25px;
+                        overflow: hidden;
+                        text-align: center;
+                        color: #494949;
+                        font-size: 18px;
+                        margin: 0 auto;
+                    }
+    
+                    &:hover {
+                        .title {
+                            color: #006db7;
+                            height: auto;
+                        }
+                    }
+    
+                    .details {
+                        display: block;
+                        width: 90%;
+                        text-align: center;
+                        color: #494949;
+                        font-size: 14px;
+                        margin: 0 auto;
+                    }
+    
+                    .buy-btn-container {
+                        display: block;
+                        width: 100%;
+                        text-align: center;
+                        padding: 15px 0 5px 0;
+    
+                        .buy-btn {
+                            display: inline-block;
+                            outline: none;
+                            padding: 10px 18px;
+                            background: #3480ff;
+                            border: 2px solid #ffd100;
+                            border-radius: 6px;
+                            color: #fff;
+                            text-align: center;
+                            cursor: pointer;
+                            font-size: 14px;
+    
+                            &:hover {
+                                background: #5c96fc;
+                            }
+    
+                            &:disabled {
+                                background: #009d00;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .slider-nav {
+        display: inline-block;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        opacity: 0.5;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: opacity .3s ease;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.left {
+            left: -60px;
+        }
+
+        &.right {
+            right: -60px;
+        }
+
+        i {
+            display: inline-block;
+            color: #fff;
+            font-size: 28px;
+            vertical-align: middle;
+        }
+
+        @media screen and (max-width: 880px) {
+            &.left {
+                left: -30px;
+            }
+    
+            &.right {
+                right: -30px;
+            }
+        }
+
+
+        @media screen and (max-width: 600px) {
+            &.left {
+                left: -20px;
+            }
+    
+            &.right {
+                right: -20px;
+            }
+        }
+    }
 }
 
 /* Imports */

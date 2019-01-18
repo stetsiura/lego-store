@@ -85,6 +85,7 @@
         <img src="/app/assets/img/home/bricks-mix.jpg" alt="Mix of Lego bricks" />
     </div>
 </div>
+
 <div class="section section-popular-themes bg-yellow padding-b-40">
     <div class="container">
         <div class="heading">
@@ -130,6 +131,34 @@
                     </div>
                     <span>Космос</span>
                 </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section section-delivery padding-b-40">
+    <div class="container">
+        <div class="heading">
+            <h2 class="color-blue">Доставка по всей Украине</h2>
+        </div>
+        <div class="row clearfix">
+            <div class="description">
+                <p>
+                    Мы заказываем раритетные наборы LEGO прямо из Европы и выполним доставку 
+                    в любое ближайшее к вам отделение Новой Почты по всей Украине.
+                    <br><br>
+                    Нажмите кнопку &laquo;Заказать&raquo; на странице набора и пройдите быструю
+                    процедуру заказа с указанием ближайшего к Вам отделения Новой Почты. Все остальное мы берем на себя.
+                    <br><br>
+                    Оплата осуществляется наложенным платежом только после получения набора в отделении Новой Почты 
+                    и после его осмотра.
+                    <br><br>
+                    Вы всегда можете отказаться от получения набора. Однако, мы сделаем все, чтобы Вы остались
+                    довольны своей покупкой и вернулись к нам еще не раз!
+                </p>
+            </div>
+            <div class="map">
+                <img src="/app/assets/img/home/map.jpg" alt="The map of the Europe">
             </div>
         </div>
     </div>

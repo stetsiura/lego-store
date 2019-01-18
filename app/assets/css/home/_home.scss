@@ -356,3 +356,68 @@
     }
 
 }
+
+/* Delivery Section */
+
+.section-delivery {
+
+    .row {
+        display: block;
+        width: 100%;
+
+        .description {
+            display: block;
+            box-sizing: border-box;
+            padding: 0 20px 0 0;
+            float: left;
+            width: 50%;
+
+            p {
+                display: block;
+                width: 80%;
+                margin: 40px auto 0 auto;
+                color: #6a6a6a;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 400;
+            }
+        }
+
+        .map {
+            display: block;
+            box-sizing: border-box;
+            padding: 0 0 0 20px;
+            float: left;
+            width: 50%;
+
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+                margin: 0 auto;
+            }
+        }
+
+        @media screen and (max-width: 1100px) {
+            .description {
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        @media screen and (max-width: 1010px) {
+            .description {
+                margin-bottom: 40px;
+                width: 100%;
+                float: none;
+            }
+
+            .map {
+                width: 100%;
+                float: none;
+            }
+        }
+    }
+
+}

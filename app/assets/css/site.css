@@ -93,6 +93,72 @@ img {
   border: none;
 }
 
+/* Buttons */
+.btn-container {
+  display: block;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.btn:hover {
+  border-color: #ffd100;
+}
+
+.btn img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+@media screen and (max-width: 1330px) {
+  .btn {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+  .btn img {
+    margin-right: 12px;
+  }
+}
+
+@media screen and (max-width: 1270px) {
+  .btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .btn img {
+    margin-right: 12px;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .btn {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .btn img {
+    margin-right: 12px;
+  }
+}
+
+.btn.btn-green {
+  border: 2px solid #fff;
+  background: #009d00;
+}
+
+.btn.btn-green:hover {
+  border: 2px solid #009d00;
+}
+
 /* Notifications */
 .notification {
   display: block;
@@ -693,4 +759,29 @@ img {
   .main-slider .slide-control.next {
     right: 3px;
   }
+}
+
+/* Home About Section */
+.section-home-about p {
+  display: block;
+  padding: 0;
+  margin: 0 auto 40px auto;
+  width: 80%;
+  text-align: center;
+  color: #6a6a6a;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 830px) {
+  .section-home-about p {
+    font-size: 16px;
+  }
+}
+
+.section-home-about img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }

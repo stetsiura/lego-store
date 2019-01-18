@@ -59,6 +59,30 @@
             <h2 class="color-blue">Популярные наборы</h2>
         </div>
         <?php $this->theme->block('partials/item_slider', ['items' => $popularProducts]); ?>
+        <div class="btn-container padding-b-40">
+            <a class="btn btn-green"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+        </div>
+    </div>
+</div>
+<div class="section section-home-about padding-b-40">
+    <div class="container">
+        <div class="heading">
+            <h2 class="color-blue">Золотая эпоха LEGO&reg;</h2>
+        </div>
+        <p>
+            Конец 80-х, 90-е и начало 2000-х по праву можно считать эпохой самого расцвета компании LEGO.<br>
+            В этот период были выпущены наборы, которые стали классикой жанра, примером для подражания
+            и, в каком-то смысле, лицом компании LEGO.
+            Это были удивительные наборы - не слишком простые, не слишком сложные, схематичные и 
+            детализированные одновременно. От этих наборов веяло добротой и теплом. 
+            И герои, и злодеи в них - все казались добрыми.
+            <br><br>
+            В нашем магазине Вы можете заказать практически любой из этих раритетных наборов по
+            самым приемлимым ценам.
+            <br><br>
+            Надеемся, что путешествие в прошлое с нашим магазином окажется для Вас приятным и увлекательным!
+        </p>
+        <img src="/app/assets/img/home/bricks-mix.jpg" alt="Mix of Lego bricks" />
     </div>
 </div>
 

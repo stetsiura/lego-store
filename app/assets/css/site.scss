@@ -17,6 +17,7 @@ body {
     color: #ffd100;
 }
 
+
 /* Misc */
 
 .container {
@@ -24,14 +25,12 @@ body {
     width: 1260px;
     margin: 0 auto;
 
-    
     &:after {
         content: "";
         display: block;
         clear: both;
     }
     
-
     @media screen and (max-width: 1430px) {
         width: auto;
         margin: 0 80px;

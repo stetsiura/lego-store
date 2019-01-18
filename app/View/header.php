@@ -34,11 +34,20 @@
                 <li><a href="#">Темы</a></li>
                 <li><a href="#">Блог</a></li>
                 <li><a href="#">Служба поддержки</a></li>
-                <li><a href="#">Доставка</a></li>
+                
+                <?php if(AuthUtils::isInRole($auth, ['admin'])): ?>
+                    <li><a href="/admin/dashboard/">Админка</a></li>
+                <?php else: ?>
+                    <li><a href="#">Доставка</a></li>
+                <?php endif; ?>
             </ul>
             <ul class="right-side">
                 <li><a href="#" class="cart"><img src="/app/assets/img/common/cart-icon.png" />Корзина<span>0</span></a></li>
-                <li><a href="#">Алексей Стецюра</a></li>
+                <?php if($auth['authorized']): ?>
+                    <li><a href="#"><?= $auth['user']['name'] ?></a></li>
+                <?php else: ?>
+                    <li><a href="/account/signin-or-register/">Войти</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
         <button id="nav-toggle" class="nav-toggle">

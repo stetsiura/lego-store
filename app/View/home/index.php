@@ -22,7 +22,9 @@
                             большой или маленький, который был выпущен в то время,
                             и который в современных магазинах Вы не найдете.
                         </p>
-                        <a class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+                        <div class="slide-btn-container">
+                            <a class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,7 +41,9 @@
                             большой или маленький, который был выпущен в то время,
                             и который в современных магазинах Вы не найдете.
                         </p>
-                        <a class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+                        <div class="slide-btn-container">
+                            <a class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+                        </div>
                     </div>
                 </div>
             </div>

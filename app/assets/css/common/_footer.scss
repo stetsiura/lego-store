@@ -1,0 +1,177 @@
+.footer {
+    display: block;
+    width: 100%;
+    background: #009d00;
+
+    .row {
+        display: block;
+        width: 100%;
+
+        .left-side {
+            display: block;
+            width: 70%;
+            float: left;
+
+            .logo {
+                display: block;
+                padding: 25px 0 25px 0;
+
+                img {
+                    display: inline-block;
+                    max-width: 100%;
+                }
+            }
+
+            .menu {
+                display: block;
+
+                span {
+                    display: inline-block;
+                    color: #fff;
+                    font-weight: 400;
+                    font-size: 18px;
+                    vertical-align: middle;
+                    margin-right: 50px;
+                }
+
+                ul {
+                    display: inline-block;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    vertical-align: middle;
+
+                    li {
+                        display: inline-block;
+                        list-style: none;
+                        padding: 0;
+                        margin: 0 25px 0;
+
+                        a {
+                            display: inline-block;
+                            text-decoration: none;
+                            cursor: pointer;
+                            color: #fff;
+                            font-size: 18px;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .right-side {
+            display: block;
+            width: 30%;
+            float: left;
+
+            h6 {
+                display: block;
+                margin: 0;
+                padding: 40px 0 25px 0;
+                color: #fff;
+                font-weight: 700;
+                font-size: 18px;
+            }
+
+            .email-subscription {
+                display: inline-block;
+
+                form {
+                    display: block;
+                    padding: 0;
+                    margin: 0;
+
+                    .subscription-email {
+                        display: inline-block;
+                        vertical-align: middle;
+                        height: 40px;
+                        border-top-left-radius: 6px;
+                        border-bottom-left-radius: 6px;
+                        border: none;
+                        background: #fff;
+                        box-sizing: border-box;
+                        padding: 5px 10px;
+                        font-size: 16px;
+                        color: #777;
+                        font-weight: 300;
+                    }
+
+                    .subscription-btn {
+                        display: inline-block;
+                        vertical-align: middle;
+                        height: 40px;
+                        width: 50px;
+                        border: none;
+                        background: #3480ff;
+                        outline: none;
+                        border-top-right-radius: 6px;
+                        border-bottom-right-radius: 6px;
+                        font-size: 16px;
+                        color: #fff;
+                        font-weight: 700;
+                        cursor: pointer;
+
+                        &:hover {
+                            background: #5c96fc;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 1220px) {
+            .left-side {
+                width: 100%;
+                float: none;
+
+                .logo {
+                    text-align: center;
+                }
+
+                .menu {
+                    text-align: center;
+                }
+            }
+
+            .right-side {
+                width: 100%;
+                float: none;
+                text-align: center;
+
+                h6 {
+                    text-align: center;
+                }
+            }
+        }
+
+        @media screen and (max-width: 750px) {
+            .left-side { 
+
+                .menu {
+
+                    span {
+                        margin: 10px 0;
+                    }
+
+                    ul > li {
+                        margin: 10px 20px;
+                    }
+                }
+            }
+
+            .right-side {
+                width: 100%;
+                float: none;
+                text-align: center;
+
+                h6 {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

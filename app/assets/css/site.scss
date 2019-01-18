@@ -328,7 +328,7 @@ img {
             }
         }
     }
-
+    
     .slider-nav {
         display: inline-block;
         position: absolute;
@@ -387,4 +387,5 @@ img {
 /* Imports */
 
 @import 'common/_header.scss';
+@import 'common/_footer.scss';
 @import 'home/_home.scss';

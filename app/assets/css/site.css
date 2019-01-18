@@ -544,6 +544,171 @@ img {
   }
 }
 
+.footer {
+  display: block;
+  width: 100%;
+  background: #009d00;
+}
+
+.footer .row {
+  display: block;
+  width: 100%;
+}
+
+.footer .row .left-side {
+  display: block;
+  width: 70%;
+  float: left;
+}
+
+.footer .row .left-side .logo {
+  display: block;
+  padding: 25px 0 25px 0;
+}
+
+.footer .row .left-side .logo img {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.footer .row .left-side .menu {
+  display: block;
+}
+
+.footer .row .left-side .menu span {
+  display: inline-block;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  vertical-align: middle;
+  margin-right: 50px;
+}
+
+.footer .row .left-side .menu ul {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.footer .row .left-side .menu ul li {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0 25px 0;
+}
+
+.footer .row .left-side .menu ul li a {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+}
+
+.footer .row .left-side .menu ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer .row .right-side {
+  display: block;
+  width: 30%;
+  float: left;
+}
+
+.footer .row .right-side h6 {
+  display: block;
+  margin: 0;
+  padding: 40px 0 25px 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.footer .row .right-side .email-subscription {
+  display: inline-block;
+}
+
+.footer .row .right-side .email-subscription form {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .row .right-side .email-subscription form .subscription-email {
+  display: inline-block;
+  vertical-align: middle;
+  height: 40px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border: none;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #777;
+  font-weight: 300;
+}
+
+.footer .row .right-side .email-subscription form .subscription-btn {
+  display: inline-block;
+  vertical-align: middle;
+  height: 40px;
+  width: 50px;
+  border: none;
+  background: #3480ff;
+  outline: none;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.footer .row .right-side .email-subscription form .subscription-btn:hover {
+  background: #5c96fc;
+}
+
+@media screen and (max-width: 1220px) {
+  .footer .row .left-side {
+    width: 100%;
+    float: none;
+  }
+  .footer .row .left-side .logo {
+    text-align: center;
+  }
+  .footer .row .left-side .menu {
+    text-align: center;
+  }
+  .footer .row .right-side {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  .footer .row .right-side h6 {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .footer .row .left-side .menu span {
+    margin: 10px 0;
+  }
+  .footer .row .left-side .menu ul > li {
+    margin: 10px 20px;
+  }
+  .footer .row .right-side {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  .footer .row .right-side h6 {
+    text-align: center;
+  }
+}
+
 .main-slider {
   display: block;
   width: 100%;
@@ -831,6 +996,10 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   padding: 20px 0;
+}
+
+.section-popular-themes .row .popular-theme-item a.content:hover span {
+  color: #006db7;
 }
 
 @media screen and (max-width: 1200px) {

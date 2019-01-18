@@ -310,6 +310,12 @@
                     text-transform: uppercase;
                     padding: 20px 0;
                 }
+
+                &:hover {
+                    span {
+                        color: #006db7;
+                    }
+                }
             }
         }
 

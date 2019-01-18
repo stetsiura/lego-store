@@ -85,6 +85,55 @@
         <img src="/app/assets/img/home/bricks-mix.jpg" alt="Mix of Lego bricks" />
     </div>
 </div>
+<div class="section section-popular-themes bg-yellow padding-b-40">
+    <div class="container">
+        <div class="heading">
+            <h2 class="color-blue">Популярные темы</h2>
+        </div>
+        <div class="row clearfix">
+            <div class="popular-theme-item">
+                <a href="/catalog/town/" class="content">
+                    <div class="image">
+                        <img src="/app/assets/img/home/town-theme-icon.jpg" >
+                    </div>
+                    <span>Город</span>
+                </a>
+            </div>
+            <div class="popular-theme-item">
+                <a href="/catalog/pirates/" class="content">
+                    <div class="image">
+                        <img src="/app/assets/img/home/pirates-theme-icon.jpg" >
+                    </div>
+                    <span>Пираты</span>
+                </a>
+            </div>
+            <div class="popular-theme-item">
+                <a href="/catalog/castle/" class="content">
+                    <div class="image">
+                        <img src="/app/assets/img/home/castle-theme-icon.jpg" >
+                    </div>
+                    <span>Замок</span>
+                </a>
+            </div>
+            <div class="popular-theme-item">
+                <a href="/catalog/western/" class="content">
+                    <div class="image">
+                        <img src="/app/assets/img/home/western-theme-icon.jpg" >
+                    </div>
+                    <span>Вестерн</span>
+                </a>
+            </div>
+            <div class="popular-theme-item">
+                <a href="/catalog/space/" class="content">
+                    <div class="image">
+                        <img src="/app/assets/img/home/space-theme-icon.jpg" >
+                    </div>
+                    <span>Космос</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php Asset::js('/app/assets/js/custom/image-slider'); ?>
 <?php Asset::js('/app/assets/js/custom/item-slider'); ?>

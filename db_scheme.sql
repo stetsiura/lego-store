@@ -26,6 +26,7 @@ CREATE TABLE category (
 	logo_image_url VARCHAR(255),
 	cover_color VARCHAR(255),
 	alias VARCHAR(300),
+	is_popular BOOLEAN,
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARACTER SET utf8;
 
@@ -52,6 +53,7 @@ CREATE TABLE product (
 	big_image_url VARCHAR(500),
 	creation_date DATETIME,
 	category_id INT,
+	sellings_count INT DEFAULT 0,
 	PRIMARY KEY (id),
 	CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB CHARACTER SET utf8;

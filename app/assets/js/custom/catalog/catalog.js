@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    imageSlider = new Slider('catalog-slider');
+    $('.theme-item a p').matchHeight();
 });

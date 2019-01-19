@@ -36,16 +36,7 @@ class AppController extends Controller
 			'user' => null
 		];
 		
-		$this->rootCategories();
-		
 		$this->initCart();
-	}
-	
-	private function rootCategories()
-	{
-		$this->load->model('Category');
-		
-		$this->data['root'] = $this->model->category->rootCategories();
 	}
 	
 	private function initCart()

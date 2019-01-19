@@ -97,10 +97,19 @@ class Html
         echo "<label for=\"{$for}\" class=\"{$class}\">{$text}</label>\n";
     }
 
-    public static function categoryImage($basename)
+    public static function categoryBigImage($basename)
     {
         if (!empty($basename)) {
-            echo CLIENT_UPLOADS_PATH . 'categories/' . $basename;
+            echo CLIENT_UPLOADS_PATH . 'categories/big/' . $basename;
+        } else {
+            echo "/app/assets/img/common/no-image.png";
+        }
+    }
+
+    public static function categorySmallImage($basename)
+    {
+        if (!empty($basename)) {
+            echo CLIENT_UPLOADS_PATH . 'categories/small/' . $basename;
         } else {
             echo "/app/assets/img/common/no-image.png";
         }

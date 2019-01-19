@@ -11,6 +11,10 @@ body {
     background-color: #ffd100;
 }
 
+.bg-blue {
+    background-color: #006db7;
+}
+
 /* Font colors */
 
 .color-yellow {
@@ -19,6 +23,10 @@ body {
 
 .color-blue {
     color: #006db7;
+}
+
+.color-white {
+    color: #fff;
 }
 
 /* Margins */
@@ -384,8 +392,10 @@ img {
     }
 }
 
+
 /* Imports */
 
 @import 'common/_header.scss';
 @import 'common/_footer.scss';
 @import 'home/_home.scss';
+@import 'catalog/_catalog.scss';

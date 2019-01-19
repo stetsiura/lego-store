@@ -30,8 +30,7 @@
         </a>
         <nav id="menu">
             <ul class="left-side">
-                <li><a href="#">Каталог</a></li>
-                <li><a href="#">Темы</a></li>
+                <li><a href="/catalog/">Каталог</a></li>
                 <li><a href="#">Блог</a></li>
                 <li><a href="#">Служба поддержки</a></li>
                 

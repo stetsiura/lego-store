@@ -2,47 +2,69 @@
 
 <?php $this->theme->header(); ?>
 
-<div class="container">
-    <div class="row margin-bottom-50">
-        <div class="catgories-list">
-            <div class="heading">
-                <h2>Категории</h2>
+<div class="catalog-header">
+    <div class="container">
+        <h1>Каталог раритетных наборов <span class="color-yellow">LEGO&reg;</span></h1>
+    </div>
+</div>
+<div class="section section-catalog-intro">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="text">
+                <p>
+                    В этом каталоге представлены самые популярные темы LEGO 90-х - 2000-х
+                    годов. Пираты, Город, Замок - все они стали легендами LEGO.<br>
+                    Эта страница - отправная точка в Вашем путешествии в прошлое к 
+                    золотым денькам компании LEGO!
+                    <br><br>
+                    Надеемся, что Вам понравится какой-нибудь наборчик, а если его не будет в
+                    наличии, то мы закажем его специально для Вас.
+                </p>
             </div>
-            <div class="categories clearfix">
-                <?php $this->theme->block('partials/root_categories', ['categories' => $categories]); ?>
+            <div class="image">
+                <img src="/app/assets/img/catalog/professor-and-timmy.jpg" alt="Professor Cyber and Timmy TimeCruiser">
             </div>
-        </div>
-        <div class="catalog-content">
-            <div class="share-slider clearfix">
-                <div class="catalog-share">
-                    <a href="#" class="share-container shadow" style="background-image: url(/app/assets/img/catalog/share.png);"></a>
-                </div>
-                <div class="catalog-slider">
-                    <div id="catalog-slider" class="slider-container image-slider shadow">
-                        <?php $this->theme->block('partials/image_slider', ['slides' => $slides]); ?>
-                    </div>
-                </div>
-            </div>
-
-            <div class="heading">
-                <h2>Популярные товары</h2>
-            </div>
-
-            <?php $this->theme->block('partials/product_slider', ['items' => $popularProducts]); ?>
-
-            <div class="heading margin-top-50">
-                <h2>Новые поступления</h2>
-            </div>
-
-            <?php $this->theme->block('partials/product_slider', ['items' => $newProducts]); ?>
-
         </div>
     </div>
 </div>
 
+<div class="section section-catalog-themes bg-yellow">
+    <div class="container">
+        <div class="heading">
+            <h2 class="color-blue">Темы LEGO</h2>
+        </div>
+        <div class="row clearfix">
+            <?php if (count($categories) > 0): ?>
+                <?php foreach($categories as $category): ?>
+                    <div class="theme-item">
+                        <a>
+                            <div class="image">
+                                <img src="<?php Html::categorySmallImage($category['small_image_url']); ?>">
+                            </div> 
+                            <span class="title"><?= $category['name'] ?></span>
+                            <div class="details">
+                                <p>
+                                    <?= $category['description'] ?>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
 
-<?php Asset::js('/app/assets/js/custom/image-slider'); ?>
-<?php Asset::js('/app/assets/js/custom/product-slider'); ?>
+<div class="section bg-yellow padding-b-40">
+    <div class="container">
+        <div class="heading">
+            <h2 class="color-blue">Популярные наборы</h2>
+        </div>
+        <?php $this->theme->block('partials/item_slider', ['items' => $popularProducts]); ?>
+    </div>
+</div>
+
+<?php Asset::js('/app/assets/js/custom/item-slider'); ?>
 <?php Asset::js('/app/assets/js/custom/catalog/catalog'); ?>
 
 <?php $this->theme->footer(); ?>

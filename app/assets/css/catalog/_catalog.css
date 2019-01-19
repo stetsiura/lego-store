@@ -1,0 +1,169 @@
+/* Intro Sections */
+.catalog-header {
+  display: block;
+  width: 100%;
+  background-image: url("/app/assets/img/catalog/bricks-blue-bg.jpg");
+  background-size: cover;
+  background-position: center top;
+}
+
+.catalog-header h1 {
+  display: block;
+  margin: 0;
+  padding: 40px 0;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 880px) {
+  .catalog-header h1 {
+    text-align: center;
+    font-size: 22px;
+  }
+}
+
+.section-catalog-intro .row {
+  display: block;
+  width: 100%;
+}
+
+.section-catalog-intro .row .text {
+  display: block;
+  width: 70%;
+  float: left;
+}
+
+.section-catalog-intro .row .text p {
+  display: block;
+  width: 80%;
+  margin: 60px 0 0 0;
+  padding: 20px 0;
+  color: #6a6a6a;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  /* border-top: 1px solid #dedede;
+                border-bottom: 1px solid #dedede; */
+}
+
+.section-catalog-intro .row .image {
+  display: block;
+  width: 30%;
+  float: left;
+  padding: 20px 0;
+}
+
+.section-catalog-intro .row .image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .section-catalog-intro .row .text {
+    width: 50%;
+  }
+  .section-catalog-intro .row .image {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .section-catalog-intro .row .text {
+    width: 100%;
+    float: none;
+  }
+  .section-catalog-intro .row .text p {
+    margin: 40px auto 20px auto;
+  }
+  .section-catalog-intro .row .image {
+    width: 100%;
+    float: none;
+  }
+}
+
+/* Themes Section */
+.section-catalog-themes .row {
+  display: block;
+  margin: 0 -20px;
+}
+
+.section-catalog-themes .row .theme-item {
+  display: block;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 0 20px;
+  margin: 0 0 40px 0;
+  float: left;
+}
+
+.section-catalog-themes .row .theme-item a {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 6px;
+  border-top-right-radius: 60px;
+  overflow: hidden;
+  background: #fff;
+  border: 3px solid #fff;
+}
+
+.section-catalog-themes .row .theme-item a .image {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.section-catalog-themes .row .theme-item a .image img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.section-catalog-themes .row .theme-item a .image .title {
+  display: inline-block;
+  position: absolute;
+  z-index: 100;
+  left: 20px;
+  bottom: 20px;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.section-catalog-themes .row .theme-item a .title {
+  display: block;
+  font-size: 24px;
+  color: #6a6a6a;
+  margin: 0;
+  padding: 15px 15px 0 15px;
+  font-weight: 700;
+}
+
+.section-catalog-themes .row .theme-item a .details {
+  display: block;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.section-catalog-themes .row .theme-item a .details p {
+  display: block;
+  padding: 0;
+  margin: 0;
+  color: #6a6a6a;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.section-catalog-themes .row .theme-item a:hover .title {
+  color: #3480ff;
+}
+
+@media screen and (max-width: 850px) {
+  .section-catalog-themes .row .theme-item {
+    width: 100%;
+  }
+}

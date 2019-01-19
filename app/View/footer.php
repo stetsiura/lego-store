@@ -8,8 +8,7 @@
                 <div class="menu">
                     <span>&COPY; <?php echo date("Y"); ?> BricksUnity</span>
                     <ul>
-                        <li><a href="#">Каталог</a></li>
-                        <li><a href="#">Темы</a></li>
+                        <li><a href="/catalog/">Каталог</a></li>
                         <li><a href="#">Блог</a></li>
                         <li><a href="#">Служба поддержки</a></li>
                     </ul>

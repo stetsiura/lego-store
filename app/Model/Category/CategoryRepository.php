@@ -8,13 +8,12 @@ class CategoryRepository extends Model
 {
 	const UNSORTED_CATEGORY_ID = 1;
 	
-	public function rootCategories()
+	public function allCategories()
 	{
 		$categories = $this->db->query(
 			$this->qb
 				->select()
 				->from('category')
-				->whereIsNull('parent_id')
 				->where('id', self::UNSORTED_CATEGORY_ID, '!=')
 				->orderBy('id', 'ASC')
 				->sql(),

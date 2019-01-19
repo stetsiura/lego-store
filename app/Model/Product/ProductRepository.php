@@ -47,79 +47,46 @@ class ProductRepository extends Model
         return $newProducts;
 	}
 
-	public function productsInStack($alias, $pageParams)
+	public function productsInCategoryByAlias($alias, $pageParams)
 	{
 		$this->load->model('Category');
 		
-		$categoryStack = $this->model->category->stack($alias, $pageParams['filters']);
-		
-		$offset = ($pageParams['page'] - 1) * self::ITEMS_PER_PAGE;
-		
 		$sort = ($pageParams['sort'] == 'name') ? 'name' : 'price';
-		$order = ($pageParams['order'] == 'asc') ? 'ASC' : 'DESC';
+        $order = ($pageParams['order'] == 'asc') ? 'ASC' : 'DESC';
+        
+        $category = $this->model->category->categoryByAlias($alias);
 
-		$inStock = $pageParams['inStock'];
-
-		if ($inStock) {
-            $products = $this->db->query(
-                $this->qb
-                    ->select()
-                    ->from('product')
-                    ->where('in_stock', true, '=')
-                    ->where('is_deleted', false, '=')
-                    ->whereIn('category_id', implode(',', $categoryStack))
-                    ->orderBy($sort, $order)
-                    ->limitOffset($offset, self::ITEMS_PER_PAGE)
-                    ->sql(),
-                $this->qb->values
-            )->all();
-        } else {
-            $products = $this->db->query(
-                $this->qb
-                    ->select()
-                    ->from('product')
-                    ->where('is_deleted', false, '=')
-                    ->whereIn('category_id', implode(',', $categoryStack))
-                    ->orderBy($sort, $order)
-                    ->limitOffset($offset, self::ITEMS_PER_PAGE)
-                    ->sql(),
-                $this->qb->values
-            )->all();
-        }
+		$products = $this->db->query(
+            $this->qb
+                ->select()
+                ->from('product')
+                ->where('category_id', $category['id'], '=')
+                ->where('item_state', 'hidden', '!=')
+                ->where('is_deleted', false, '=')
+                ->orderBy($sort, $order)
+                ->sql(),
+            $this->qb->values
+        )->all();
 		
 		return $products;
 	}
 
-    public function productsInStackCount($alias, $pageParams)
+    public function productsInCategoryByAliasCount($alias)
     {
         $this->load->model('Category');
+        
+        $category = $this->model->category->categoryByAlias($alias);
 
-        $categoryStack = $this->model->category->stack($alias, $pageParams['filters']);
-
-        $inStock = $pageParams['inStock'];
-
-        if ($inStock) {
-            $count = $this->db->query(
-                $this->qb
-                    ->select("count(id) as 'count'")
-                    ->from('product')
-                    ->where('in_stock', true, '=')
-                    ->where('is_deleted', false, '=')
-                    ->whereIn('category_id', implode(',', $categoryStack))
-                    ->sql(),
-                $this->qb->values
-            )->firstOrDefault();
-        } else {
-            $count = $this->db->query(
-                $this->qb
-                    ->select("count(id) as 'count'")
-                    ->from('product')
-                    ->where('is_deleted', false, '=')
-                    ->whereIn('category_id', implode(',', $categoryStack))
-                    ->sql(),
-                $this->qb->values
-            )->firstOrDefault();
-        }
+        $count = $this->db->query(
+            $this->qb
+                ->select("count(id) as 'count'")
+                ->from('product')
+                ->where('category_id', $category['id'], '=')
+                ->where('item_state', 'hidden', '!=')
+                ->where('is_deleted', false, '=')
+                ->sql(),
+            $this->qb->values
+        )->firstOrDefault();
 
         return $count['count'];
     }

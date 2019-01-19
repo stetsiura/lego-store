@@ -1,5 +1,3 @@
-<?php Asset::css('/app/assets/css/home/home'); ?>
-
 <?php $this->theme->header(); ?>
 <?php if(Session::has('home-message')): ?>
     <?php $message = Session::flash('home-message'); ?>
@@ -23,7 +21,7 @@
                             и который в современных магазинах Вы не найдете.
                         </p>
                         <div class="slide-btn-container">
-                            <a class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+                            <a href="/catalog/" class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +40,7 @@
                             и который в современных магазинах Вы не найдете.
                         </p>
                         <div class="slide-btn-container">
-                            <a class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+                            <a href="/catalog/" class="slider-btn" style="background-color: #009d00;"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +58,7 @@
         </div>
         <?php $this->theme->block('partials/item_slider', ['items' => $popularProducts]); ?>
         <div class="btn-container padding-b-40">
-            <a class="btn btn-green"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
+            <a href="/catalog/" class="btn btn-green"><img src="/app/assets/img/common/brick-icon.png">Перейти в каталог</a>
         </div>
     </div>
 </div>
@@ -93,7 +91,7 @@
         </div>
         <div class="row clearfix">
             <div class="popular-theme-item">
-                <a href="/catalog/town/" class="content">
+                <a href="/category/town" class="content">
                     <div class="image">
                         <img src="/app/assets/img/home/town-theme-icon.jpg" >
                     </div>
@@ -101,7 +99,7 @@
                 </a>
             </div>
             <div class="popular-theme-item">
-                <a href="/catalog/pirates/" class="content">
+                <a href="/category/pirates" class="content">
                     <div class="image">
                         <img src="/app/assets/img/home/pirates-theme-icon.jpg" >
                     </div>
@@ -109,7 +107,7 @@
                 </a>
             </div>
             <div class="popular-theme-item">
-                <a href="/catalog/castle/" class="content">
+                <a href="/category/castle" class="content">
                     <div class="image">
                         <img src="/app/assets/img/home/castle-theme-icon.jpg" >
                     </div>
@@ -117,7 +115,7 @@
                 </a>
             </div>
             <div class="popular-theme-item">
-                <a href="/catalog/western/" class="content">
+                <a href="/category/western" class="content">
                     <div class="image">
                         <img src="/app/assets/img/home/western-theme-icon.jpg" >
                     </div>
@@ -125,7 +123,7 @@
                 </a>
             </div>
             <div class="popular-theme-item">
-                <a href="/catalog/space/" class="content">
+                <a href="/category/space" class="content">
                     <div class="image">
                         <img src="/app/assets/img/home/space-theme-icon.jpg" >
                     </div>

@@ -26,6 +26,7 @@
 .section-catalog-intro .row {
   display: block;
   width: 100%;
+  position: relative;
 }
 
 .section-catalog-intro .row .text {

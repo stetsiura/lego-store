@@ -13,18 +13,6 @@ class Url
     {
         $params = [];
 
-        $params['alias'] = $alias;
-
-        if (isset($getParams['inStock'])) {
-            $params['inStock'] = $getParams['inStock'] == 'true';
-        } else {
-            $params['inStock'] = true;
-        }
-
-        $params['filters'] = isset($getParams['filters']) && !empty($getParams['filters']) ? explode('--', $getParams['filters']) : [];
-
-        $params['page'] = isset($getParams['page']) ? $getParams['page'] : 1;
-
         $params['sort'] = isset($getParams['sort']) ? $getParams['sort'] : 'name';
 
         $params['order'] = isset($getParams['order']) ? $getParams['order'] : 'asc';
@@ -34,11 +22,9 @@ class Url
         return $params;
     }
 
-    public static function categoryUrl($alias, $filters, $inStock, $page, $sort, $order = 'asc')
+    public static function categoryUrl($alias, $sort, $order = 'asc')
     {
-        $filtersString = implode('--', $filters);
-        $inStockString = ($inStock) ? "true" : "false";
-        return "/category/{$alias}?filters={$filtersString}&inStock={$inStockString}&page={$page}&sort={$sort}&order={$order}";
+        return "/category/{$alias}?sort={$sort}&order={$order}";
     }
 
     public static function searchUrl($term, $page, $sort, $order = 'asc')

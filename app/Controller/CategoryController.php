@@ -11,10 +11,9 @@ class CategoryController extends AppController
 		
 		$this->data['pageParams'] = \Url::pageParams($this->request->get, $alias);
 		$this->data['category'] = $this->model->category->categoryByAlias($alias);
-		$this->data['childCategories'] = $this->model->category->childCategories($this->data['category']['id']);
-		$this->data['products'] = $this->model->product->productsInStack($alias, $this->data['pageParams']);
-		$this->data['productsCount'] = $this->model->product->productsInStackCount($alias, $this->data['pageParams']);
-        $this->data['categories'] = $this->model->category->rootCategories();
+		$this->data['products'] = $this->model->product->productsInCategoryByAlias($alias, $this->data['pageParams']);
+		$this->data['productsCount'] = $this->model->product->productsInCategoryByAliasCount($alias);
+        //$this->data['categories'] = $this->model->category->allCategories();
 		
 		$this->view->setTitle('Категория "' . $this->data['category']['name'] . '"');
 		$this->view->render('category/category', $this->data);

@@ -1,5 +1,3 @@
-<?php Asset::css('/app/assets/css/catalog/catalog'); ?>
-
 <?php $this->theme->header(); ?>
 
 <div class="catalog-header">
@@ -37,7 +35,7 @@
             <?php if (count($categories) > 0): ?>
                 <?php foreach($categories as $category): ?>
                     <div class="theme-item">
-                        <a>
+                        <a href="/category/<?= $category['alias'] ?>">
                             <div class="image">
                                 <img src="<?php Html::categorySmallImage($category['small_image_url']); ?>">
                             </div> 

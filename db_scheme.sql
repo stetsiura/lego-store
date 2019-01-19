@@ -27,6 +27,7 @@ CREATE TABLE category (
 	cover_color VARCHAR(255),
 	alias VARCHAR(300),
 	is_popular BOOLEAN,
+	youtube_link VARCHAR(500),
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB CHARACTER SET utf8;
 

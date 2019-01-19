@@ -161,8 +161,13 @@
                         <p class="form-error-message"></p>
                     </div>
                     <div class="form-group">
-                        <?php AdminHtml::label('cover_color', 'Цвет обложки (HEX):'); ?>
+                        <?php AdminHtml::label('cover-color', 'Цвет обложки (HEX):'); ?>
                         <?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', $category['cover_color'], 'false', 'false', '', 'Цвет обложки (HEX)...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        <?php AdminHtml::label('youtube-link', 'Ссылка YouTube:'); ?>
+                        <?php AdminHtml::inputText('youtube_link', 'youtube-link', 'form-control', $category['youtube_link'], 'false', 'false', '', 'Ссылка YouTube...'); ?>
                         <p class="form-error-message"></p>
                     </div>
                     <div class="form-group">
@@ -241,6 +246,11 @@
                     <div class="form-group">
                         <?php AdminHtml::label('cover_color', 'Цвет обложки (HEX):'); ?>
                         <?php AdminHtml::inputText('cover_color', 'cover-color', 'form-control', '', 'false', 'false', '', 'Цвет обложки (HEX)...'); ?>
+                        <p class="form-error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        <?php AdminHtml::label('youtube-link', 'Ссылка YouTube:'); ?>
+                        <?php AdminHtml::inputText('youtube_link', 'youtube-link', 'form-control', '', 'false', 'false', '', 'Ссылка YouTube...'); ?>
                         <p class="form-error-message"></p>
                     </div>
                     <div class="form-group">

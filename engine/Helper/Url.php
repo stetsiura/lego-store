@@ -13,7 +13,7 @@ class Url
     {
         $params = [];
 
-        $params['sort'] = isset($getParams['sort']) ? $getParams['sort'] : 'name';
+        $params['sort'] = isset($getParams['sort']) ? $getParams['sort'] : 'price';
 
         $params['order'] = isset($getParams['order']) ? $getParams['order'] : 'asc';
 
@@ -29,18 +29,18 @@ class Url
 
     public static function searchUrl($term, $page, $sort, $order = 'asc')
     {
-        return "/search?term={$term}&page={$page}&sort={$sort}&order={$order}";
+        return "/search?term={$term}&sort={$sort}&order={$order}";
     }
 
-    public static function navigationUrl($term, $alias, $filters, $inStock, $page, $sort, $order, $type = 'category')
+    public static function navigationUrl($term, $alias, $sort, $order, $type = 'category')
     {
         switch($type) {
             case 'category':
-                return self::categoryUrl($alias, $filters, $inStock, $page, $sort, $order);
+                return self::categoryUrl($alias, $sort, $order);
             case 'search':
-                return self::searchUrl($term, $page, $sort, $order);
+                return self::searchUrl($term, $sort, $order);
             default:
-                return self::categoryUrl($alias, $filters, $inStock, $page, $sort, $order);
+                return self::categoryUrl($alias, $sort, $order);
         }
     }
 }

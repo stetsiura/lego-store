@@ -24,7 +24,7 @@ $this->router->add('category', '/category/(alias:any)', 'CategoryController:cate
 
 /* Product */
 
-$this->router->add('product', '/product/(alias:any)', 'ProductController:product');
+$this->router->add('product', '/product/(number:any)', 'ProductController:product');
 $this->router->add('product-wishlist-redirect', '/product/wishlist-redirect/', 'ProductController:wishlistRedirect');
 $this->router->add('product-add-wishlist', '/product/add-to-wishlist/', 'ProductController:addWishlist', 'POST');
 $this->router->add('product-remove-wishlist', '/product/remove-from-wishlist/', 'ProductController:removeWishlist', 'POST');

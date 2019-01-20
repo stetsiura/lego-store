@@ -62,6 +62,7 @@
         </div>
     </div>
 </div>
+
 <div class="section section-home-about padding-b-40">
     <div class="container">
         <div class="heading">

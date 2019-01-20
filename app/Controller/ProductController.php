@@ -4,18 +4,17 @@ namespace App\Controller;
 
 class ProductController extends AppController
 {
-	public function product($alias)
+	public function product($number)
 	{
 		$this->load->model('Product');
         $this->load->model('Category');
         $this->load->model('Wishlist');
 		
-		$product = $this->model->product->productByAlias($alias);
+		$product = $this->model->product->productByNumber($number);
 
 		$this->data['product'] = $product;
 		$this->data['suggestions'] = $this->model->product->productsInCategory($product['category_id'], $product['id']);
-        $this->data['categories'] = $this->model->category->rootCategories();
-        $this->data['breadcrumbs'] = $this->model->category->breadcrumbs($product['category_id']);
+        $this->data['category'] = $this->model->category->category($product['category_id']);
 
         $this->data['wishlistItem'] = null;
 

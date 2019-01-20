@@ -21,7 +21,8 @@ class ProductRepository extends Model
 				->select()
 				->from('product')
 				->where('is_popular', true, '=')
-				->where('is_deleted', false, '=')
+                ->where('is_deleted', false, '=')
+                ->where('item_state', 'hidden', '!=')
                 ->orderBy('creation_date', 'DESC')
 				->limit(self::POPULAR_PRODUCTS_LIMIT)
 				->sql(),
@@ -91,13 +92,13 @@ class ProductRepository extends Model
         return $count['count'];
     }
 
-    public function productByAlias($alias)
+    public function productByNumber($number)
     {
         $product = $this->db->query(
             $this->qb
                 ->select()
                 ->from('product')
-                ->where('alias', trim($alias), '=')
+                ->where('item_code', trim($number), '=')
                 ->limit(1)
                 ->sql(),
             $this->qb->values
@@ -113,7 +114,8 @@ class ProductRepository extends Model
                 ->select()
                 ->from('product')
                 ->where('category_id', $categoryId, '=')
-				->where('is_deleted', false, '=')
+                ->where('is_deleted', false, '=')
+                ->where('item_state', 'hidden', '!=')
                 ->where('id', $productId, '!=')
                 ->orderBy('name', 'asc')
                 ->limit(self::SUGGESTIONS_PRODUCTS_LIMIT)

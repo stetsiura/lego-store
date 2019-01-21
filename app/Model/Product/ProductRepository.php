@@ -92,6 +92,21 @@ class ProductRepository extends Model
         return $count['count'];
     }
 
+    public function productById($id)
+    {
+        $product = $this->db->query(
+            $this->qb
+                ->select()
+                ->from('product')
+                ->where('id', $id, '=')
+                ->limit(1)
+                ->sql(),
+            $this->qb->values
+        )->firstOrDefault();
+
+        return $product;
+    }
+
     public function productByNumber($number)
     {
         $product = $this->db->query(

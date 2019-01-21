@@ -49,21 +49,19 @@ class Cart
 	
 	public function add($id)
 	{
-		$this->load->model('Book');
+		$this->load->model('Product');
 		
-		$book = $this->model->book->book($id);
+		$product = $this->model->product->productById($id);
 		
 		$this->cart();		
-		$this->addToItems($id, $book);		
+		$this->addToItems($id, $product);		
 		$this->calculateItems();
 		$this->calculateTotalPrice();
-		
-		$this->deliveryPrice();
 		
 		$this->save();
 		
 		return [
-			'book_name' => $book['title'],
+			'product_name' => "{$product['item_code']} - {$product['name']}",
 			'count' => $this->cart['count'],
 			'total_price' => number_format($this->cart['total_price'], 2)
 		];
@@ -76,21 +74,6 @@ class Cart
 		return $this->cart;
 	}
 	
-	public function setCount($id, $count)
-	{
-		$this->cart();
-		
-		$this->cart['items'][$id]['count'] = (int)$count;
-		$this->cart['items'][$id]['item_price'] = $this->cart['items'][$id]['count'] * $this->bookPrice($this->cart['items'][$id]['book']);
-		
-		$this->calculateItems();
-		$this->calculateTotalPrice();
-		
-		$this->deliveryPrice();
-		
-		$this->save();
-	}
-	
 	public function remove($id)
 	{
 		$this->cart();
@@ -101,19 +84,6 @@ class Cart
 		
 		$this->calculateItems();
 		$this->calculateTotalPrice();
-		
-		$this->deliveryPrice();
-		
-		$this->save();
-	}
-	
-	public function setDelivery($delivery)
-	{
-		$this->cart();
-		
-		$this->cart['delivery'] = $delivery;
-		
-		$this->deliveryPrice();
 		
 		$this->save();
 	}
@@ -132,56 +102,45 @@ class Cart
 		\Session::set(self::SESSION_CART_KEY, $this->cart);
 	}
 	
-	private function deliveryPrice()
-	{
-		$this->load->model('Setting');
-		
-		$delivery = $this->cart['delivery'];
-		
-		$deliveryLimit = (float)$this->model->setting->setting('free-delivery-limit');
-		$deliveryCost = (float)$this->model->setting->setting('delivery-cost');
-		
-		if ($delivery == 'self') {
-			$this->cart['delivery_cost'] = 0.0;
-		} else {
-			if ($this->cart['total_price'] < $deliveryLimit) {
-				$this->cart['delivery_cost'] = $deliveryCost;
-			} else {
-				$this->cart['delivery_cost'] = 0.0;
-			}
-		}
-	}
-	
 	private function calculateTotalPrice()
 	{
 		$this->cart['total_price'] = 0.0;
 		
 		foreach($this->cart['items'] as $item) {
-			$this->cart['total_price'] += $item['item_price'];
+			$this->cart['total_price'] += $item['item_price'] * $item['count'];
 		}
 	}
 	
-	private function bookPrice($book)
+	private function productPrice($product)
 	{
-		return ($book['has_discount']) ? $book['actual_price'] : $book['price'];
+		return ($product['has_discount']) ? $product['actual_price'] : $product['price'];
 	}
 	
 	private function calculateItems()
 	{
-		$this->cart['count'] = array_reduce($this->cart['items'], function($sum, $item) {
-			return $sum += $item['count'];
-		});
+		if (empty($this->cart['items'])) {
+			$this->cart['count'] = 0;
+		} else {
+			$this->cart['count'] = array_reduce($this->cart['items'], function($sum, $item) {
+				return $sum += $item['count'];
+			});
+		}
 	}
 	
-	private function addToItems($id, $book)
+	private function addToItems($id, $product)
 	{
-		if (isset($this->cart['items'][$id])) {
-			$this->cart['items'][$id]['count'] = $this->cart['items'][$id]['count'] + 1;
-			$this->cart['items'][$id]['item_price'] = $this->bookPrice($book) * $this->cart['items'][$id]['count'];
-		} else {
+		$this->load->model('Setting');
+
+		if (!isset($this->cart['items'][$id])) {
 			$this->cart['items'][$id]['count'] = 1;
-			$this->cart['items'][$id]['book'] = $book;
-			$this->cart['items'][$id]['item_price'] = $this->bookPrice($book);
+			$this->cart['items'][$id]['product'] = $product;
+			$this->cart['items'][$id]['item_price'] = $this->productPrice($product);
+
+			if ($product['item_state'] == 'order') {
+				$this->cart['items'][$id]['delivery_time'] = (float)$this->model->setting->setting('average-delivery-time-order');
+			} else {
+				$this->cart['items'][$id]['delivery_time'] = (float)$this->model->setting->setting('average-delivery-time-instock');
+			}
 		}
 	}
 	
@@ -192,9 +151,7 @@ class Cart
 			$this->cart = [
 				'items' => [],
 				'count' => 0,
-				'total_price' => 0.0,
-				'delivery' => 'self',
-				'delivery_cost' => 0.0
+				'total_price' => 0.0
 			];
 			
 			\Session::set(self::SESSION_CART_KEY, $this->cart);

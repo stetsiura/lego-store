@@ -17,7 +17,7 @@
                             <?= $item['minifigures_count'] ?> <?= Html::minifiguresCasing($item['minifigures_count']) ?>
                         </div>
                         <div class="buy-btn-container">
-                            <button class="buy-btn">
+                            <button class="buy-btn cart-ctrl" data-product-id="<?= $item['id'] ?>">
                                 <?= Html::productPrice($item) ?> грн | <?= Html::buyButtonText($item['item_state']) ?>
                             </button> 
                         </div>

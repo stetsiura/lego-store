@@ -58,6 +58,11 @@ var notificationManager;
             self.hideNotification();
         }, this.settings.displayPeriod);
     };
+
+    NotificationManager.prototype.successfulCartAdding = function(productName) {
+        var message = 'Набор &laquo;' + productName + '&raquo; добавлен в <a href="/cart/">Корзину</a>.';
+        this.showNotification(true, message);
+    };
 	
 	NotificationManager.prototype.successfulWishlistAdding = function() {
         var message = 'Товар добавлен в список желаний';

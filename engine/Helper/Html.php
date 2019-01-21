@@ -174,34 +174,6 @@ class Html
         echo \DateTime::createFromFormat('Y-m-d h:i:s', $dateString)->format('d.m.Y');
     }
 
-    public static function medCategoryIconPosition($alias)
-    {
-        switch($alias) {
-            case 'health-beauty':
-                return '0px 0px;';
-            case 'digital-products':
-                return '-24px 0px;';
-            case 'creative-homeware':
-                return '-49px 0px;';
-            case 'accessories':
-                return '-74px 0px;';
-            case 'boutique-bags':
-                return '-98px 0px;';
-            case 'stationery-gift':
-                return '0px -30px;';
-            case 'life-department':
-                return '-24px -30px;';
-            case 'toy-series':
-                return '-49px -30px;';
-            case 'seasonal-products':
-                return '-74px -30px;';
-            case 'textile':
-                return '-98px -30px;';
-            default:
-                return '0px 0px;';
-        }
-    }
-
     public static function partsCasing($count) {
         $mod100 = $count % 100;
 
@@ -226,6 +198,36 @@ class Html
                     return "деталей";
                 default:
                     return "деталь";
+            }
+        }
+
+        return "деталь";
+    }
+
+    public static function daysCasing($count) {
+        $mod100 = $count % 100;
+
+        $mod10 = $count % 10;
+
+        if ($mod100 >= 11 && $mod100 <= 20) {
+            return "дней";
+        } else {
+            switch($mod10) {
+                case 1:
+                    return "день";
+                case 2:
+                case 3:
+                case 4:
+                    return "дня";
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 0:
+                    return "дней";
+                default:
+                    return "дней";
             }
         }
 
@@ -300,6 +302,17 @@ class Html
                 return 'Купить';
             default:
                 return 'Заказать';
+        }
+    }
+
+    public static function productStateText($itemState) {
+        switch($itemState) {
+            case 'order':
+                return 'Под заказ';
+            case 'instock':
+                return 'Есть в наличии';
+            default:
+                return 'Под заказ';
         }
     }
 

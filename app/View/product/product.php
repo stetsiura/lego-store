@@ -101,11 +101,19 @@
                                 <?php endif; ?>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                Наличие:
+                            </td>
+                            <td>
+                                <?= Html::productStateText($product['item_state']) ?>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <div class="control-btns">
-                    <button class="buy-btn">
+                    <button class="buy-btn cart-ctrl" data-product-id="<?= $product['id'] ?>">
                         <?= Html::productPrice($product) ?> грн | <?= Html::buyButtonText($product['item_state']) ?>
                     </button>
 

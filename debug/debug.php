@@ -7,12 +7,13 @@ function debug($data)
     if (is_null($data)) {
         echo "null";
     }
-	elseif($data === false)
-	{
+	elseif($data === false) {
 		echo "false";
-	}
-    else
-    {
+    }
+    elseif ($data === true) {
+        echo "true";
+    }
+    else {
         print_r($data);
     }   
 

@@ -29,6 +29,10 @@ body {
     color: #fff;
 }
 
+.color-green {
+    color: #009d00;
+}
+
 /* Margins */
 
 .margin-b-40 {
@@ -41,6 +45,9 @@ body {
     padding-bottom: 40px;
 }
 
+.padding-t-40 {
+    padding-top: 40px;;
+}
 
 /* Misc */
 
@@ -440,3 +447,4 @@ img {
 @import 'catalog/_catalog.scss';
 @import 'category/_category.scss';
 @import 'product/_product.scss';
+@import 'cart/_cart.scss';

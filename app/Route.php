@@ -43,10 +43,6 @@ $this->router->add('news-article', '/news/article/(alias:any)', 'NewsController:
 $this->router->add('search-form', '/search/form/', 'SearchController:form', 'POST');
 $this->router->add('search-result', '/search', 'SearchController:result');
 
-/* Shops */
-
-$this->router->add('shops', '/shops/', 'ShopsController:index');
-
 /* About */
 
 $this->router->add('about', '/about-us/', 'AboutController:index');
@@ -57,6 +53,8 @@ $this->router->add('support-index', '/support/', 'SupportController:index');
 $this->router->add('support-form', '/support/support-form/', 'SupportController:form', 'POST');
 $this->router->add('support-subscribe', '/support/subscribe/', 'SupportController:subscribe', 'POST');
 
-/* Franchise */
+/* Cart */
 
-$this->router->add('franchise-index', '/franchise/', 'FranchiseController:index');
+$this->router->add('cart-index', '/cart/', 'CartController:index');
+$this->router->add('cart-add', '/cart/add/', 'CartController:add', 'POST');
+$this->router->add('cart-remove', '/cart/remove/', 'CartController:remove', 'POST');

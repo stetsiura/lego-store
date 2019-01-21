@@ -8,6 +8,7 @@
 <?php Asset::commonJs('/app/assets/js/custom/custom-select'); ?>
 <?php Asset::commonJs('/app/assets/js/custom/validation'); ?>
 <?php Asset::commonJs('/app/assets/js/custom/notifications'); ?>
+<?php Asset::commonJs('/app/assets/js/custom/cart'); ?>
 <?php Asset::commonJs('/app/assets/js/custom/footer'); ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
                 <?php endif; ?>
             </ul>
             <ul class="right-side">
-                <li><a href="#" class="cart"><img src="/app/assets/img/common/cart-icon.png" />Корзина<span>0</span></a></li>
+                <li><a href="/cart/" class="cart"><img src="/app/assets/img/common/cart-icon.png" />Корзина<span id="cart-total-count"><?= $cart['count'] ?></span></a></li>
                 <?php if($auth['authorized']): ?>
                     <li><a href="#"><?= $auth['user']['name'] ?></a></li>
                 <?php else: ?>
@@ -54,3 +55,5 @@
         </button>
     </div>
 </header>
+
+<?php //debug($cart); ?>

@@ -1775,6 +1775,7 @@ img {
   text-align: center;
   cursor: pointer;
   font-size: 16px;
+  text-decoration: none;
 }
 
 .product-details .row .description .control-btns .wishlist-btn:hover {

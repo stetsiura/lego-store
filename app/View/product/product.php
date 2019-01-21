@@ -119,12 +119,12 @@
 
                     <?php if($auth['authorized']): ?>
                         <?php if(is_null($wishlistItem)): ?>
-                            <a class="wishlist-btn wishlist-add" data-id="<?= $product['id'] ?>">
+                            <a class="wishlist-btn wishlist-ctrl wishlist-add" data-id="<?= $product['id'] ?>">
                                 <i class="fa fa-heart"></i>
                                 <span>Добавить в список желаний</span>
                             </a>
                         <?php else: ?>
-                            <a class="wishlist-btn wishlist-remove" data-id="<?= $wishlistItem['id'] ?>">
+                            <a class="wishlist-btn wishlist-ctrl wishlist-remove" data-id="<?= $wishlistItem['id'] ?>">
                                 <i class="fa fa-heart"></i>
                                 <span>Удалить из списка желаний</span>
                             </a>

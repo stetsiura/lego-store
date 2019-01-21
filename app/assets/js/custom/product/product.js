@@ -76,7 +76,7 @@ Wishlist.prototype.processButtonClick = function(button) {
 $(document).ready(function() {
     wishlistManager = new Wishlist();
 
-    $('.wishlist-btn').click(function() {
+    $('.wishlist-ctrl').click(function() {
         var button = $(this);
 
         wishlistManager.processButtonClick(button);

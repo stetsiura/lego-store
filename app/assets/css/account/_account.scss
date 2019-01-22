@@ -1,0 +1,79 @@
+/* Account Header Section */
+
+.account-header {
+    display: block;
+    width: 100%;
+    background-image: url('/app/assets/img/catalog/bricks-blue-bg.jpg');
+    background-size: cover;
+    background-position: center top;
+
+    h1 {
+        display: block;
+        margin: 0;
+        padding: 40px 0;
+        font-size: 30px;
+        color: #fff;
+        font-weight: 700;
+
+        @media screen and (max-width: 880px) {
+            text-align: center;
+            font-size: 22px;
+        }
+    }
+}
+
+/* Sign in or register Section */
+
+.signin-or-register-section {
+
+    .login-register {
+
+        width: 100%;
+
+        > div {
+            display: block;
+            box-sizing: border-box;
+            width: 50%;
+            float: left;
+    
+            &.login {
+                padding: 0 20px 0 0;
+            }
+    
+            &.register {
+                padding: 0 0 0 20px;
+            }
+
+            .heading {
+                width: 100% !important;
+            }
+        }
+
+        @media screen and (max-width: 840px) {
+            > div {
+                width: 100%;
+                float: none;
+        
+                &.login {
+                    padding: 0;
+                }
+        
+                &.register {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+/* Password reset Section */
+
+.reset-password-section {
+
+    .centered-block {
+        display: block;
+        margin: 0 auto 300px auto;
+        width: 80%;
+    }
+}
+

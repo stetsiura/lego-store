@@ -6,7 +6,7 @@ class RegistrationMessage extends AbstractMessage
 {
     protected $templateFile = FILE_ROOT_DIR . TEMPLATES_PATH . 'registration-message.html';
 
-    protected $subject = 'Благодрим за регистрацию на сайте "MINISO"!';
+    protected $subject = 'Благодрим за регистрацию на сайте "BricksUnity"!';
 
     public function __construct($data, $email)
     {

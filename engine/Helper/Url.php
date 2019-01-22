@@ -6,7 +6,7 @@ class Url
 {
     public static function passwordResetUrl($hash)
     {
-        return 'http://1184105.mnsdev.web.hosting-test.net/account/password-reset-form/' . $hash;
+        return 'http://bricksunity.loc:8080/account/password-reset-form/' . $hash;
     }
 
     public static function pageParams($getParams, $alias = '')

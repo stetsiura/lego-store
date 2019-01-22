@@ -6,7 +6,7 @@ class PasswordResetMessage extends AbstractMessage
 {
     protected $templateFile = FILE_ROOT_DIR . TEMPLATES_PATH . 'password-reset-message.html';
 
-    protected $subject = 'Сброс пароля на сайте "MINISO"';
+    protected $subject = 'Сброс пароля на сайте "BricksUnity"';
 
     public function __construct($data, $email)
     {

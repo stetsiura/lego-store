@@ -33,6 +33,10 @@ body {
     color: #009d00;
 }
 
+.color-gray {
+    color: #6a6a6a;
+}
+
 /* Margins */
 
 .margin-b-40 {
@@ -114,6 +118,18 @@ img {
     border: none;
 }
 
+.align-left {
+    text-align: left !important;
+}
+
+.align-center {
+    text-align: center !important;
+}
+
+.align-right {
+    text-align: right !important;
+}
+
 /* Buttons */
 
 .btn-container {
@@ -176,6 +192,14 @@ img {
             border: 2px solid #009d00;
         }
     }
+}
+
+.link {
+    display: inline-block;
+    margin: 0 15px;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 /* Custaom select */
@@ -482,6 +506,52 @@ img {
         color: red;
         font-weight: 400;
     }
+
+    .form-text {
+        display: block;
+        padding: 0;
+        margin: 0;
+        font-size: 16px;
+        color: #6a6a6a;
+        font-weight: 700;
+    }
+}
+
+/* Form Alerts */
+
+.form-alert {
+    display: block;
+    padding: 15px 20px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    border-radius: 6px;
+
+    &.warning {
+        background: orange;
+    }
+
+    &.success {
+        background: #009d00;
+    }
+}
+
+/* Site alerts */
+
+.alert {
+    display: block;
+    padding: 20px 0;
+
+    &.success {
+        background: #009d00;
+    }
+
+    div {
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+        text-align: center;
+    }
 }
 
 /* Imports */
@@ -494,3 +564,4 @@ img {
 @import 'product/_product.scss';
 @import 'cart/_cart.scss';
 @import 'order/_order.scss';
+@import 'account/_account.scss';

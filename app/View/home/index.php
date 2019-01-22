@@ -1,9 +1,10 @@
 <?php $this->theme->header(); ?>
+
 <?php if(Session::has('home-message')): ?>
     <?php $message = Session::flash('home-message'); ?>
-    <div class="container">
-        <div class="alert success margin-top-15"><?= $message ?></div>
-    </div>
+    <div class="alert success">
+        <div class="container"><?= $message ?></div>
+    </div>     
 <?php endif; ?>
 
 <div id="main-slider" class="main-slider">

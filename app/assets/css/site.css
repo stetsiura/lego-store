@@ -31,6 +31,10 @@ body {
   color: #009d00;
 }
 
+.color-gray {
+  color: #6a6a6a;
+}
+
 /* Margins */
 .margin-b-40 {
   margin-bottom: 40px;
@@ -109,6 +113,18 @@ img {
   border: none;
 }
 
+.align-left {
+  text-align: left !important;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
 /* Buttons */
 .btn-container {
   display: block;
@@ -173,6 +189,14 @@ img {
 
 .btn.btn-green:hover {
   border: 2px solid #009d00;
+}
+
+.link {
+  display: inline-block;
+  margin: 0 15px;
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 /* Custaom select */
@@ -471,6 +495,50 @@ img {
   font-size: 14px;
   color: red;
   font-weight: 400;
+}
+
+.form-group .form-text {
+  display: block;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  color: #6a6a6a;
+  font-weight: 700;
+}
+
+/* Form Alerts */
+.form-alert {
+  display: block;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 6px;
+}
+
+.form-alert.warning {
+  background: orange;
+}
+
+.form-alert.success {
+  background: #009d00;
+}
+
+/* Site alerts */
+.alert {
+  display: block;
+  padding: 20px 0;
+}
+
+.alert.success {
+  background: #009d00;
+}
+
+.alert div {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
 }
 
 /* Imports */
@@ -2164,4 +2232,73 @@ img {
 .order-success-section .order-success .message .continue {
   text-align: center;
   padding-bottom: 150px;
+}
+
+/* Account Header Section */
+.account-header {
+  display: block;
+  width: 100%;
+  background-image: url("/app/assets/img/catalog/bricks-blue-bg.jpg");
+  background-size: cover;
+  background-position: center top;
+}
+
+.account-header h1 {
+  display: block;
+  margin: 0;
+  padding: 40px 0;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 880px) {
+  .account-header h1 {
+    text-align: center;
+    font-size: 22px;
+  }
+}
+
+/* Sign in or register Section */
+.signin-or-register-section .login-register {
+  width: 100%;
+}
+
+.signin-or-register-section .login-register > div {
+  display: block;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+}
+
+.signin-or-register-section .login-register > div.login {
+  padding: 0 20px 0 0;
+}
+
+.signin-or-register-section .login-register > div.register {
+  padding: 0 0 0 20px;
+}
+
+.signin-or-register-section .login-register > div .heading {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 840px) {
+  .signin-or-register-section .login-register > div {
+    width: 100%;
+    float: none;
+  }
+  .signin-or-register-section .login-register > div.login {
+    padding: 0;
+  }
+  .signin-or-register-section .login-register > div.register {
+    padding: 0;
+  }
+}
+
+/* Password reset Section */
+.reset-password-section .centered-block {
+  display: block;
+  margin: 0 auto 300px auto;
+  width: 80%;
 }

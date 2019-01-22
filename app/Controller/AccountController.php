@@ -53,7 +53,7 @@ class AccountController extends AppController
             );
 
             $result = $this->mail->sendMessage($message);
-            \Session::set('home-message', 'Вы успешно зарегистрированы. Добро пожаловать на сайт MINISO!');
+            \Session::set('home-message', 'Вы успешно зарегистрированы. Добро пожаловать на сайт BricksUnity!');
             \Redirect::to('/');
         }
 

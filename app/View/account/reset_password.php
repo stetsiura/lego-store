@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <p class="form-text align-center">
                         Если Вы забыли пароль для входа на сайт, мы поможем Вам его восстановить.<br>
-                        Для начала введите Ваш E-mail в форму ниже и нажмите &laquo;Продолжить&raquo;.
+                        Для начала введите Ваш E-mail в форму ниже и нажмите &laquo;Далее&raquo;.
                     </p>
                 </div>
                 <div class="form-group">

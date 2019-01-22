@@ -63,7 +63,7 @@
     <div class="container">
         <div class="total clearfix">
             <span>Итого за заказ (без стоимости доставки по Украине): <b class="color-blue"><?= $cart['total_price'] ?></b> грн</span>
-            <a class="btn btn-green" href="#"><img src="/app/assets/img/common/brick-icon.png">Оформить заказ</a>
+            <a class="btn btn-green" href="/order/checkout/"><img src="/app/assets/img/common/brick-icon.png">Оформить заказ</a>
         </div>
     </div>
     

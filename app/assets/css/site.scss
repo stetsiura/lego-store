@@ -439,6 +439,51 @@ img {
     }  
 }
 
+/* Form Controls */
+
+.form-group {
+    display: block;
+    padding: 15px 0;
+
+    label {
+        display: block;
+        font-size: 16px;
+        color: #6a6a6a;
+        font-weight: 700;
+        padding-bottom: 10px;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        border: 2px solid #fff;
+        font-size: 14px;
+        color: #6a6a6a;
+        background: #fff;
+        border-radius: 6px;
+        outline: none;
+
+        &:focus {
+            border: 2px solid #3480ff;
+        }
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+
+    .form-error-message {
+        display: block;
+        padding: 5px 0;
+        margin: 0;
+        font-size: 14px;
+        color: red;
+        font-weight: 400;
+    }
+}
+
 /* Imports */
 
 @import 'common/_header.scss';
@@ -448,3 +493,4 @@ img {
 @import 'category/_category.scss';
 @import 'product/_product.scss';
 @import 'cart/_cart.scss';
+@import 'order/_order.scss';

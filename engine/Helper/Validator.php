@@ -101,4 +101,16 @@ class Validator
             ->email($params['email'])
             ->result();
     }
+
+    public function validateOrder($params)
+    {
+        return $this
+            ->init()
+            ->notEmpty($params['client_name'])
+            ->email($params['email'])
+            ->notEmpty($params['phone'])
+            ->notEmpty($params['city'])
+            ->notEmpty($params['post_office'])
+            ->result();
+    }
 }

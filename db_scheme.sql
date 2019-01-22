@@ -135,7 +135,7 @@ CREATE TABLE client_order (
 	items_cost FLOAT(6, 2),
 	total_cost FLOAT(6, 2),
 	order_status ENUM('new', 'ready', 'delivered', 'cancelled') DEFAULT 'new',
-	notes VARCHAR(1000),
+	notes VARCHAR(2000),
 	user_id INT,
 	address_id INT NOT NULL,
 	PRIMARY KEY(id),

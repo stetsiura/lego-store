@@ -429,6 +429,50 @@ img {
   }
 }
 
+/* Form Controls */
+.form-group {
+  display: block;
+  padding: 15px 0;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  color: #6a6a6a;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.form-group .form-control {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  font-size: 14px;
+  color: #6a6a6a;
+  background: #fff;
+  border-radius: 6px;
+  outline: none;
+}
+
+.form-group .form-control:focus {
+  border: 2px solid #3480ff;
+}
+
+.form-group textarea {
+  min-height: 150px;
+}
+
+.form-group .form-error-message {
+  display: block;
+  padding: 5px 0;
+  margin: 0;
+  font-size: 14px;
+  color: red;
+  font-weight: 400;
+}
+
 /* Imports */
 /* Header */
 .header {
@@ -2015,4 +2059,109 @@ img {
   .total a {
     float: none;
   }
+}
+
+/* Checkout Header */
+.checkout-header {
+  display: block;
+  width: 100%;
+  background-image: url("/app/assets/img/catalog/bricks-blue-bg.jpg");
+  background-size: cover;
+  background-position: center top;
+}
+
+.checkout-header h1 {
+  display: block;
+  margin: 0;
+  padding: 40px 0;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 880px) {
+  .checkout-header h1 {
+    text-align: center;
+    font-size: 22px;
+  }
+}
+
+/* Checout Section */
+.checout-section form {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.checout-section form .row {
+  display: block;
+  width: 100%;
+}
+
+.checout-section form .row > div {
+  display: block;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+}
+
+.checout-section form .row .left-panel {
+  padding: 0 20px 0 0;
+}
+
+.checout-section form .row .right-panel {
+  padding: 0 0 0 20px;
+}
+
+@media screen and (max-width: 840px) {
+  .checout-section form .row > div {
+    width: 100%;
+    float: none;
+  }
+  .checout-section form .row .left-panel {
+    padding: 0;
+  }
+  .checout-section form .row .right-panel {
+    padding: 0;
+  }
+}
+
+/* Order success Section */
+.order-success-section .order-success {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.order-success-section .order-success .icon {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.order-success-section .order-success .icon i {
+  display: inline-block;
+  color: #009d00;
+  font-size: 150px;
+}
+
+.order-success-section .order-success .message .message-header {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #009d00;
+}
+
+.order-success-section .order-success .message .message-details {
+  display: block;
+  padding: 40px 0;
+  margin: 0;
+  font-size: 18px;
+  color: #6a6a6a;
+  font-weight: 400;
+  text-align: center;
+}
+
+.order-success-section .order-success .message .continue {
+  text-align: center;
+  padding-bottom: 150px;
 }

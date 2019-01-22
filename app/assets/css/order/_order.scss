@@ -1,0 +1,117 @@
+/* Checkout Header */
+
+.checkout-header {
+    display: block;
+    width: 100%;
+    background-image: url('/app/assets/img/catalog/bricks-blue-bg.jpg');
+    background-size: cover;
+    background-position: center top;
+
+    h1 {
+        display: block;
+        margin: 0;
+        padding: 40px 0;
+        font-size: 30px;
+        color: #fff;
+        font-weight: 700;
+
+        @media screen and (max-width: 880px) {
+            text-align: center;
+            font-size: 22px;
+        }
+    }
+}
+
+/* Checout Section */
+
+.checout-section {
+
+    form {
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        .row {
+            display: block;
+            width: 100%;
+
+            > div {
+                display: block;
+                box-sizing: border-box;
+                width: 50%;
+                float: left;
+            }
+
+            .left-panel {
+                padding: 0 20px 0 0;
+            }
+
+            .right-panel {
+                padding: 0 0 0 20px;
+            }
+
+            @media screen and (max-width: 840px) {
+                > div {
+                    width: 100%;
+                    float: none;  
+                }
+
+                .left-panel {
+                    padding: 0;
+                }
+    
+                .right-panel {
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+/* Order success Section */
+
+.order-success-section {
+
+    .order-success {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+
+        .icon {
+
+            text-align: center;
+            padding-bottom: 40px;
+
+            i {
+                display: inline-block;
+                color: #009d00;
+                font-size: 150px;
+            }
+        }
+
+        .message {
+
+            .message-header {
+                text-align: center;
+                font-size: 28px;
+                font-weight: 700;
+                color: #009d00;
+            }
+
+            .message-details {
+                display: block;
+                padding: 40px 0;
+                margin: 0;
+                font-size: 18px;
+                color: #6a6a6a;
+                font-weight: 400;
+                text-align: center;
+            }
+
+            .continue {
+                text-align: center;
+                padding-bottom: 150px;
+            }
+        }
+    }
+}

@@ -84,7 +84,7 @@
                                 <?php if ($product['item_condition'] == 'new'): ?>
                                     <b>Новый</b>
                                 <?php else: ?>
-                                    <b>Б/У</b><br><br>
+                                    <b>Б/У</b> (в отличном состоянии) <br><br>
 
                                     <?php if ($product['has_all_parts']): ?>
                                         <i class="fa fa-check"></i> Полная комплектация (есть все детали)<br>

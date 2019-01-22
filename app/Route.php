@@ -58,3 +58,9 @@ $this->router->add('support-subscribe', '/support/subscribe/', 'SupportControlle
 $this->router->add('cart-index', '/cart/', 'CartController:index');
 $this->router->add('cart-add', '/cart/add/', 'CartController:add', 'POST');
 $this->router->add('cart-remove', '/cart/remove/', 'CartController:remove', 'POST');
+
+/* Order */
+
+$this->router->add('order-checkout', '/order/checkout/', 'OrderController:checkout');
+$this->router->add('order-place-order', '/order/place-order/', 'OrderController:placeOrder', 'POST');
+$this->router->add('order-success', '/order/success/', 'OrderController:success');

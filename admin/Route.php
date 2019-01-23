@@ -67,5 +67,11 @@ $this->router->add('content-slide-move-up', '/admin/content/slider/slide-move-up
 
 /* Settings */
 
-$this->router->add('settings_general', '/admin/settings/general/', 'SettingsController:general');
-$this->router->add('settings_update', '/admin/settings/update/', 'SettingsController:updateSetting', 'POST');
+$this->router->add('settings-general', '/admin/settings/general/', 'SettingsController:general');
+$this->router->add('settings-update', '/admin/settings/update/', 'SettingsController:updateSetting', 'POST');
+
+/* Orders */
+
+$this->router->add('orders-index', '/admin/orders/(section:str)', 'OrdersController:index');
+$this->router->add('orders-item', '/admin/orders/item/(id:int)', 'OrdersController:item');
+$this->router->add('orders-update', '/admin/orders/update/', 'OrdersController:update', 'POST');

@@ -68,6 +68,7 @@
                 </ul>
             </li>
             <li class=""><a href="/admin/settings/general/">Настройки</a></li>
+            <li class=""><a href="<?= AdminUrl::orderUrl('new', 1, 'date', 'desc'); ?>">Заказы</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
 		<?php if ($auth['authorized']): ?>

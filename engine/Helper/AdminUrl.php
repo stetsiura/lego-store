@@ -65,4 +65,9 @@ class AdminUrl
         }
 
     }
+
+    public static function orderUrl($section, $page, $sort, $order = 'ASC')
+    {
+        return "/admin/orders/{$section}?page={$page}&sort={$sort}&order={$order}";
+    }
 }

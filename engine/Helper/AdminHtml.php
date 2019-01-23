@@ -105,6 +105,22 @@ class AdminHtml
         }
     }
 
+    public static function ordersSectionName($section = 'new')
+    {
+        switch($section) {
+            case 'new':
+                return 'Новые';
+            case 'ready':
+                return 'Отправленные';
+            case 'delivered':
+                return 'Доставленные';
+            case 'cancelled':
+                return 'Отмененные';
+            default:
+                return 'Новые';
+        }
+    }
+
     public static function roleName($role = 'user')
     {
         switch($role) {
@@ -358,5 +374,26 @@ class AdminHtml
         } else {
             echo "НЕ опубликовано";
         }
+    }
+
+    public static function compressOrderItems($order)
+    {
+        $result = '';
+
+        foreach($order['items'] as $item) {
+            $result .= "<li><b>{$item['item_code']}</b> ({$item['name']})</li>";
+        }
+
+        return $result;
+    }
+
+    public static function orderStatusOptions()
+    {
+        return [
+            ['key' => 'new', 'value' => 'Новый заказ'],
+            ['key' => 'ready', 'value' => 'Сформированный заказ'],
+            ['key' => 'delivered', 'value' => 'Доставленный заказ'],
+            ['key' => 'cancelled', 'value' => 'Отмененный заказ']
+        ];
     }
 }

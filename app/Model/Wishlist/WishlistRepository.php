@@ -83,12 +83,16 @@ class WishlistRepository extends Model
 					product.actual_price AS 'actual_price',
 					product.has_discount AS 'has_discount',
 					product.small_image_url AS 'small_image_url',
-					product.alias AS 'alias'
+                    product.item_code AS 'item_code',
+                    product.parts_count AS 'parts_count',
+                    product.minifigures_count AS 'minifigures_count',
+                    product.item_state AS 'item_state'
 				")
                 ->from('product')
                 ->innerJoin('wishlist', 'product.id', 'wishlist.product_id')
                 ->where('wishlist.user_id', $userId, '=')
                 ->where('product.is_deleted', false, '=')
+                ->where('product.item_state', 'hidden', '!=')
                 ->orderBy('wishlist.creation_date', 'desc')
                 ->sql(),
             $this->qb->values

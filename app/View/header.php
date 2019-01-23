@@ -44,7 +44,7 @@
             <ul class="right-side">
                 <li><a href="/cart/" class="cart"><img src="/app/assets/img/common/cart-icon.png" />Корзина<span id="cart-total-count"><?= $cart['count'] ?></span></a></li>
                 <?php if($auth['authorized']): ?>
-                    <li><a href="#"><?= $auth['user']['name'] ?></a></li>
+                    <li><a href="/cabinet/"><?= $auth['user']['name'] ?></a></li>
                 <?php else: ?>
                     <li><a href="/account/signin-or-register/">Войти</a></li>
                 <?php endif; ?>

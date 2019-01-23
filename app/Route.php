@@ -29,9 +29,9 @@ $this->router->add('product-wishlist-redirect', '/product/wishlist-redirect/', '
 $this->router->add('product-add-wishlist', '/product/add-to-wishlist/', 'ProductController:addWishlist', 'POST');
 $this->router->add('product-remove-wishlist', '/product/remove-from-wishlist/', 'ProductController:removeWishlist', 'POST');
 
-/* Wishlist */
+/* Cabinet */
 
-$this->router->add('wishlist', '/wishlist/', 'WishlistController:index');
+$this->router->add('cabinet', '/cabinet/', 'CabinetController:index');
 
 /* News */
 

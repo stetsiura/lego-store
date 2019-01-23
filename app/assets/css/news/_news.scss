@@ -1,0 +1,169 @@
+/* Header Section */
+
+.news-header {
+    display: block;
+    width: 100%;
+    background-image: url('/app/assets/img/catalog/bricks-blue-bg.jpg');
+    background-size: cover;
+    background-position: center top;
+
+    h1 {
+        display: block;
+        margin: 0;
+        padding: 40px 0;
+        font-size: 30px;
+        color: #fff;
+        font-weight: 700;
+
+        @media screen and (max-width: 880px) {
+            text-align: center;
+            font-size: 22px;
+        }
+    }
+}
+
+/* News list Section */
+
+.section-news-list {
+
+    .row {
+        
+        display: block;
+        margin: 0 -20px;
+
+        .news-item {
+            display: block;
+            box-sizing: border-box;
+            width: 50%;
+            padding: 0 20px;
+            margin: 0 0 40px 0;
+            float: left;
+
+             > a {
+                display: block;
+                text-decoration: none;
+                box-sizing: border-box;
+                cursor: pointer;
+                padding: 15px;
+                border-radius: 6px;
+                background: #fff;
+
+                .image {
+                    display: block;
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .title {
+                    display: block;
+                    padding: 20px 0;
+                    font-size: 24px;
+                    color: #6a6a6a;
+                    font-weight: 700;
+                }
+
+                .description {
+                    display: block;
+                    padding: 0 0 20px 0;
+                    margin: 0;
+                    color: #6a6a6a;
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+
+                .date {
+                    display: block;
+
+                    span {
+                        display: inline-block;
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: #009d00;
+
+                        &:last-child {
+                            float: right;
+                        }
+                    }
+                }
+
+                &:hover {
+
+                    .title {
+                        color: #3480ff;
+                    }
+
+                    .date {
+
+                        span:last-child {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 1100px) {
+            .news-item {
+                width: 100%;
+                float: none;
+            }
+        }
+    }
+}
+
+/* Blog article Section */
+
+.blog-article-section {
+
+    .article {
+
+        .article-date {
+            display: block;
+            padding: 0 0 20px 0;
+            color: #3480ff;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        img.cover-image {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        article {
+            font-size: 16px;
+            color: #6a6a6a;
+            font-weight: 400;
+
+            p {
+                display: block;
+                margin: 0;
+                padding: 15px 0;
+                font-size: 16px;
+                color: #6a6a6a;
+                font-weight: 400;
+            }
+    
+            b {
+                font-weight: 700;
+            }
+
+            img:not(.cover-image) {
+                
+                display: block;
+                margin: 0 auto;
+                max-width: 100%;
+                height: auto;
+            } 
+        }
+        
+    }
+    
+}

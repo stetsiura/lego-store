@@ -6,7 +6,7 @@ class Sanitize
 {
     const STYLES_REGEX = '/(<[^>]+) style=".*?"/i';
 
-    const NEWS_PREVIEW_LENGTH = 200;
+    const NEWS_PREVIEW_LENGTH = 400;
 
     public static function removeStyles($input)
     {

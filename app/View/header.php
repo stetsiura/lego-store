@@ -32,7 +32,7 @@
         <nav id="menu">
             <ul class="left-side">
                 <li><a href="/catalog/">Каталог</a></li>
-                <li><a href="#">Блог</a></li>
+                <li><a href="/blog/">Блог</a></li>
                 <li><a href="#">Служба поддержки</a></li>
                 
                 <?php if(AuthUtils::isInRole($auth, ['admin'])): ?>

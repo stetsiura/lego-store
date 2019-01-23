@@ -10,13 +10,7 @@ class NewsController extends AppController
 
         $this->data['news'] = $this->model->news->all();
 
-        if (count($this->data['news']) > 0) {
-            $this->data['firstNews'] = array_shift($this->data['news']);
-        } else {
-            $this->data['firstNews'] = null;
-        }
-
-        $this->view->setTitle('Новости');
+        $this->view->setTitle('Блог');
         $this->view->render('news/index', $this->data);
     }
 
@@ -25,9 +19,9 @@ class NewsController extends AppController
         $this->load->model('News');
 
         $this->data['article'] = $this->model->news->article($alias);
-        $this->data['recent'] = $this->model->news->recent();
+        //$this->data['recent'] = $this->model->news->recent();
 
-        $this->view->setTitle($this->data['article']['title']);
+        $this->view->setTitle($this->data['article']['title'] . ' - Блог');
         $this->view->render('news/article', $this->data);
     }
 }

@@ -1,4 +1,5 @@
 $(document).ready(function () {
-    $('.news-title-fix-height').matchHeight();
-    $('.fix-height').matchHeight();
+    $('.news-item .image').matchHeight();
+    $('.news-item .title').matchHeight();
+    $('.news-item .description').matchHeight();
 });

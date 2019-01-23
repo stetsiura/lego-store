@@ -51,7 +51,7 @@
                                             Опции <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="/admin/news/edit/<?= $item['id'] ?>" target="_blank">Редактировать</a></li>
+                                            <li><a href="/admin/news/edit/<?= $item['id'] ?>">Редактировать</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="#" class="removing-news-btn" data-toggle="modal" data-target="#removing-news-modal" data-news-id="<?= $item['id'] ?>">Удалить</a></li>
                                         </ul>

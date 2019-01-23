@@ -35,8 +35,8 @@ $this->router->add('wishlist', '/wishlist/', 'WishlistController:index');
 
 /* News */
 
-$this->router->add('news', '/news/', 'NewsController:index');
-$this->router->add('news-article', '/news/article/(alias:any)', 'NewsController:article');
+$this->router->add('news', '/blog/', 'NewsController:index');
+$this->router->add('news-article', '/blog/article/(alias:any)', 'NewsController:article');
 
 /* Search */
 

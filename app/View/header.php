@@ -33,12 +33,11 @@
             <ul class="left-side">
                 <li><a href="/catalog/">Каталог</a></li>
                 <li><a href="/blog/">Блог</a></li>
-                <li><a href="#">Служба поддержки</a></li>
                 
                 <?php if(AuthUtils::isInRole($auth, ['admin'])): ?>
                     <li><a href="/admin/dashboard/">Админка</a></li>
                 <?php else: ?>
-                    <li><a href="#">Доставка</a></li>
+                    <li><a href="/support/">Служба поддержки и доставка</a></li>
                 <?php endif; ?>
             </ul>
             <ul class="right-side">

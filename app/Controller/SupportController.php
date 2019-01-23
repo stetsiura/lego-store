@@ -16,7 +16,7 @@ class SupportController extends AppController
     {
         $this->load->model('Setting');
 
-        $email = $this->model->setting->setting('admin_email');
+        $email = $this->model->setting->setting('support-email');
 
         $params = $this->request->post;
 

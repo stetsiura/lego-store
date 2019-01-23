@@ -6,7 +6,7 @@ class SupportMessage extends AbstractMessage
 {
     protected $templateFile = FILE_ROOT_DIR . TEMPLATES_PATH . 'support-message.html';
 
-    protected $subject = 'Запрос в службу поддержки MINISO';
+    protected $subject = 'Запрос в службу поддержки BricksUnity';
 
     public function __construct($data, $email)
     {

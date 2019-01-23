@@ -134,6 +134,27 @@ img {
     text-align: right !important;
 }
 
+.no-items-butterfly {
+    display: block;
+    text-align: center;
+    padding: 100px 0;
+
+    img {
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    span {
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #6a6a6a;
+        padding: 40px 0;
+    }
+}
+
 /* Buttons */
 
 .btn-container {

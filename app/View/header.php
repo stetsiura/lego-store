@@ -1,5 +1,5 @@
 <?php Asset::css('/app/assets/css/font-awesome.min'); ?>
-<?php Asset::css('/app/assets/css/site'); ?>
+<?php Asset::css('/app/assets/css/site.min'); ?>
 
 <?php Asset::commonJs('/app/assets/js/lib/jquery-1.10.2.min'); ?>
 <?php Asset::commonJs('/app/assets/js/lib/jquery.matchHeight'); ?>
@@ -33,7 +33,7 @@
             <ul class="left-side">
                 <li><a href="/catalog/">Каталог</a></li>
                 <li><a href="/blog/">Блог</a></li>
-                
+
                 <?php if(AuthUtils::isInRole($auth, ['admin'])): ?>
                     <li><a href="/admin/dashboard/">Админка</a></li>
                 <?php else: ?>
@@ -54,5 +54,3 @@
         </button>
     </div>
 </header>
-
-<?php //debug($cart); ?>

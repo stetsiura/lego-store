@@ -6,6 +6,7 @@
     background-image: url('/app/assets/img/catalog/bricks-blue-bg.jpg');
     background-size: cover;
     background-position: center top;
+    background-repeat: no-repeat;
 
     h1 {
         display: block;
@@ -23,7 +24,7 @@
 }
 
 .section-catalog-intro {
-    
+
     .row {
         display: block;
         width: 100%;
@@ -153,7 +154,7 @@
                     display: block;
                     box-sizing: border-box;
                     padding: 15px;
-                    
+
                     p {
                         display: block;
                         padding: 0;

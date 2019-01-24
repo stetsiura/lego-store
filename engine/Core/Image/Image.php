@@ -60,36 +60,6 @@ class Image
         $this->resize($inputFile, $outputFile, self::SLIDER_IMAGE_SCALE);
     }
 
-	/**
-	 * @param string $inputFile
-	 * @param string $outputFile
-	 * @param string $scale
-	 * @return string
-	 */
-	/* private function resize($inputFile, $outputFile, $scale = self::ORIGINAL_SCALE)
-	{
-		$size = $this->getSizeArray($scale);
-
-		$image = new \Imagick();
-		$image->readImage($inputFile);
-		$image->scaleImage($size[0], $size[1], true);
-		$image->writeImage($outputFile);
-		$image->clear();
-		$image->destroy();
-	}
-
-	private function getSizeArray($scale) {
-
-		$size = explode('x', $scale);
-
-		for ($i = 0; $i < count($size); $i++) {
-			$size[$i] = (int)$size[$i];
-		}
-
-		return $size;
-
-	} */
-
 	private function resize($inputFile, $outputFile, $scale = self::ORIGINAL_SCALE)
 	{
 		$command = $this->command($inputFile, $outputFile, $scale);
@@ -102,11 +72,20 @@ class Image
 			$inputFile .
 			' -resize ' .
 			$scale .
-			'^> ' .
+			$this->resizeSuffix() .
+			' ' .
 			$outputFile;
 
 		return $command;
 	}
+
+		public function resizeSuffix() {
+			if (SRV == "DEV") {
+				return '^>';
+			} else {
+				return '\>';
+			}
+		}
 
 	/**
 	 * @return string

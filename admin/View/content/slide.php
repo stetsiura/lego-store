@@ -8,7 +8,7 @@
 	<div class="rw">
 		<div class="cl cl-3">
             <div class="list-group">
-			
+
 				<?php foreach($slides as $slideItem): ?>
 				<a href="/admin/content/slide/<?= $alias ?>/<?= $slideItem['position'] ?>" class="list-group-item <?= AdminHtml::activeClass($slideItem['position'], $slide['position']) ?>">
 					<h4 class="list-group-item-heading">Слайд <?= $slideItem['position'] ?></h4>
@@ -17,7 +17,7 @@
 					</p>
 				</a>
 				<?php endforeach; ?>
-			  
+
 				<a href="/admin/content/slider/<?= $alias ?>/new-slide/" class="list-group-item">
 					<h4 class="list-group-item-heading">Создать новый слайд</h4>
 					<p class="list-group-item-text">
@@ -45,6 +45,10 @@
 								<input type="file" accept="image/*" name="image" id="image" />
 							</div>
                             <p class="help-block">Изображение должно быть <b>1000px</b> по ширине и <b>420px</b> по высоте.</p>
+						</div>
+            <div class="form-group">
+							<?php AdminHtml::label('header-text', 'Заголовок слайда:'); ?>
+							<?php AdminHtml::inputText('header_text', 'header-text', 'form-control', $slide['header_text'], 'false', 'false', '', 'Заголовок слайда...'); ?>
 						</div>
 						<div class="form-group">
 							<?php AdminHtml::label('button-text', 'Текст в кнопке слайда:'); ?>
@@ -102,7 +106,7 @@
 						</div>
 					</div>
 				</div>
-			</div>					
+			</div>
 		</div>
 	</div>
 </div>

@@ -64,7 +64,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Контент <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="/admin/content/slider/main-slider">Слайдер на главной</a></li>
-                    <li><a href="/admin/content/slider/catalog-slider">Слайдер в каталоге</a></li>
                 </ul>
             </li>
             <li class=""><a href="/admin/settings/general/">Настройки</a></li>

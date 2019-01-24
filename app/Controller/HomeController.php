@@ -11,9 +11,8 @@ class HomeController extends AppController
         $this->load->model('Content');
 
 		$this->data['popularProducts'] = $this->model->product->popular();
-		//$this->data['recentNews'] = $this->model->news->recent();
-		//$this->data['slides'] = $this->model->content->slides('main-slider');
-		
+		$this->data['slides'] = $this->model->content->slides('main-slider');
+
 		$this->view->setTitle('Главная');
 		$this->view->render('home/index', $this->data);
 	}

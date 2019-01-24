@@ -27,7 +27,7 @@
 .section-news-list {
 
     .row {
-        
+
         display: block;
         margin: 0 -20px;
 
@@ -150,20 +150,20 @@
                 color: #6a6a6a;
                 font-weight: 400;
             }
-    
+
             b {
                 font-weight: 700;
             }
 
             img:not(.cover-image) {
-                
+
                 display: block;
                 margin: 0 auto;
-                max-width: 100%;
+                max-width: 50%;
                 height: auto;
-            } 
+            }
         }
-        
+
     }
-    
+
 }

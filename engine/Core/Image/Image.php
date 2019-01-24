@@ -102,7 +102,7 @@ class Image
 			$inputFile .
 			' -resize ' .
 			$scale .
-			' ' .
+			'^> ' .
 			$outputFile;
 
 		return $command;

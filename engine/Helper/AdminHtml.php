@@ -391,7 +391,7 @@ class AdminHtml
     {
         return [
             ['key' => 'new', 'value' => 'Новый заказ'],
-            ['key' => 'ready', 'value' => 'Сформированный заказ'],
+            ['key' => 'ready', 'value' => 'Отправленный заказ'],
             ['key' => 'delivered', 'value' => 'Доставленный заказ'],
             ['key' => 'cancelled', 'value' => 'Отмененный заказ']
         ];

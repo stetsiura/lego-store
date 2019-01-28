@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use \Engine\Core\Mail\Message\OrderConfirmationMessage;
+use \Engine\Core\Mail\Message\OrderNotificationMessage;
 
 class OrderController extends AppController
 {
 	public function checkout()
     {
         $this->load->model('Order');
-        
+
         $cart = $this->cart->cart();
 
         if (count($cart['items']) == 0) {
@@ -35,6 +36,7 @@ class OrderController extends AppController
 	public function placeOrder()
     {
         $this->load->model('Order');
+		$this->load->model('Setting');
 
         $params = $this->request->post;
 
@@ -52,7 +54,8 @@ class OrderController extends AppController
 
         $cart = $this->cart->cart();
 
-        $message = new OrderConfirmationMessage(
+		// Message to client
+        $confirmationMessage = new OrderConfirmationMessage(
             [
                 'client_name' => $params['client_name'],
                 'order_number' => $orderId,
@@ -62,7 +65,14 @@ class OrderController extends AppController
             ],
             $params['email']);
 
-        $result = $this->mail->sendMessage($message);
+        $this->mail->sendMessage($confirmationMessage);
+
+		// Message to admin
+		$adminEmail = $this->model->setting->setting('support-email');
+
+		$notificationMessage = new OrderNotificationMessage([], $adminEmail);
+
+        $this->mail->sendMessage($notificationMessage);
 
         $this->cart->clear();
 

@@ -1,1 +1,1 @@
-E-commerce shop for MINISO brand.
+E-commerce shop for BrcksUnity brand.
